@@ -1,6 +1,5 @@
 """Shared CLI options and source-tree imports for direct script execution."""
 import argparse
-import logging
 import sys
 from pathlib import Path
 
@@ -9,6 +8,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from heart_disease.config import DATA_PATH, REPORT_DIR
 from heart_disease.data import load_dataset
+from heart_disease.logging_config import configure_logging
 
 
 def data_parser(description: str) -> argparse.ArgumentParser:
@@ -25,6 +25,3 @@ def load_args(args):
     return load_dataset(args.data, schema=args.schema, target_semantics=args.target_semantics, site=args.site)
 
 
-def configure_logging():
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
-    logging.getLogger("matplotlib").setLevel(logging.WARNING)

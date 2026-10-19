@@ -1,5 +1,5 @@
 """Smoke-test inference using one real source record; never used as evaluation."""
-from _common import data_parser, load_args
+from _common import configure_logging, data_parser, load_args
 from heart_disease.config import FEATURES, MODEL_PATH
 from heart_disease.prediction import load_artifact, predict_records
 from pathlib import Path
@@ -9,6 +9,7 @@ def main():
     parser = data_parser(__doc__)
     parser.add_argument("--model", type=Path, default=MODEL_PATH)
     args = parser.parse_args()
+    configure_logging()
     try:
         pipeline, metadata = load_artifact(args.model)
         dataset = load_args(args)

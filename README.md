@@ -331,3 +331,13 @@ Before publishing source, `python scripts/audit_publication.py` checks the stage
 Future work: additional untouched cohorts, prospective evaluation, measurement harmonization with source documentation, more representative demographic data and independently reviewed fairness studies. Existing viewed cohorts must not become tuning targets. These steps require suitable data and do not turn the current demo into a diagnostic system.
 
 Reference documentation: [scikit-learn supervised learning](https://scikit-learn.org/stable/supervised_learning.html), [pipelines and leakage](https://scikit-learn.org/stable/common_pitfalls.html), [XGBoost parameters](https://xgboost.readthedocs.io/en/stable/parameter.html), [Streamlit](https://docs.streamlit.io/).
+
+## Operational logging
+
+The dashboard and download/training/EDA/prediction commands emit JSON operational
+logs to stderr, with UTC timestamp, severity, logger name and message. Set
+`HEART_LOG_LEVEL` to `DEBUG`, `INFO` (default), `WARNING`, `ERROR` or `CRITICAL`.
+Streamlit reruns reuse the handler and preserve host logging handlers. Application
+code must not log patient measurements. `.env.example` documents all supported
+environment variables; export them in your shell because `.env` is not loaded
+automatically.

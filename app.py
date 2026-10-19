@@ -18,6 +18,7 @@ from heart_disease.data import load_dataset
 from heart_disease.io import read_json
 from heart_disease.prediction import ArtifactError, load_artifact, metadata_path, predict_records
 from heart_disease.demo import public_demo_record, result_export
+from heart_disease.logging_config import configure_logging
 
 st.set_page_config(page_title="Heart Disease Lab", page_icon="♥", layout="wide", initial_sidebar_state="auto")
 st.markdown("""
@@ -410,6 +411,7 @@ def about_page(report, metadata):
 
 
 def main():
+    configure_logging()
     metadata = json_file(metadata_path(MODEL_PATH))
     report = json_file(REPORT_DIR / "evaluation_report.json")
     with st.sidebar:
