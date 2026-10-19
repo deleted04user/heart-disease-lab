@@ -2,7 +2,7 @@
 
 A complete local machine learning project using **real UCI Heart Disease records**: validated acquisition, exploratory analysis, leakage-safe model comparison, reusable inference and a five-page Streamlit dashboard.
 
-Release 1.2 adds a standard `uv.lock`, enforced lint/format/type/coverage checks,
+Release 1.2.1 adds a standard `uv.lock`, enforced lint/format/type/coverage checks,
 dependency auditing and updates, JSON logging, and isolated development/serving
 containers. It retains the [portable release](docs/deployment.md), MIT code
 license, public-example-only cloud entrypoint and transfer-gap diagnostics.

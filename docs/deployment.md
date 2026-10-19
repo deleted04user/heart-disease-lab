@@ -6,7 +6,7 @@ the `streamlit-demo` branch and `deploy/streamlit_app.py`, with Python **3.13**.
 ## Portable release
 
 `python scripts/build_release.py` creates
-`dist/heart-disease-lab-1.2.0.zip` and writes the exact archive SHA-256 and fixed
+`dist/heart-disease-lab-1.2.1.zip` and writes the exact archive SHA-256 and fixed
 GitHub release URL to `deploy/release.json`. The archive contains the unchanged
 trusted fitted model, matching metadata, sanitized aggregate reports, code,
 licenses and five complete anonymous public UCI examples. It excludes full raw
@@ -42,7 +42,7 @@ and verifies that only the intended configuration differs from main.
 1. Run unit tests, the publication index audit and clean portable verification.
 2. Push reviewed source/aggregate materials on `main`; run the test matrix and
    manual real-data integration workflow.
-3. Publish tag/release `v1.2.0` with the verified ZIP, without adding model binaries
+3. Publish tag/release `v1.2.1` with the verified ZIP, without adding model binaries
    to Git history. Run the manual portable-release verification workflow.
 4. Create/push `streamlit-demo`. In Streamlit Community Cloud choose repository
    `deleted04user/heart-disease-lab`, branch `streamlit-demo`, entrypoint

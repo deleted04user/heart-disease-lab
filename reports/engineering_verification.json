@@ -1,5 +1,5 @@
 {
-  "recorded_utc": "2026-10-19T17:00:20.140470+00:00",
+  "recorded_utc": "2026-10-19T19:49:28.534868+00:00",
   "local_windows": {
     "tests": 88,
     "status": "passed",
@@ -27,14 +27,564 @@
   "ruff_format": "passed",
   "mypy_package_files": 18,
   "mypy": "passed",
-  "dependency_audit": "no known vulnerabilities found in pinned development export",
+  "dependency_audit": {
+    "development": "no known vulnerabilities found",
+    "serving": "no known vulnerabilities found"
+  },
   "portable_windows": "reports/portable_windows_verification.json",
   "portable_linux": "reports/portable_linux_verification.json",
   "model_unchanged": {
     "run_id": "27586d03470741438f644f6067b70f22",
     "model_sha256": "e4b0ba8ab0a23ab81ff1fd53dd03ff326766089a2556bfe3a49fb8e1c5e889c7"
   },
-  "remote_engineering_ci": "pending initial push",
-  "container_verification": "pending GitHub Linux runner",
-  "hosting": "deferred by user request"
+  "remote_engineering_ci": {
+    "conclusion": "success",
+    "headSha": "198bb0a59b4a061147fee658989730d4b8450002",
+    "jobs": [
+      {
+        "completedAt": "2026-10-19T17:09:09Z",
+        "conclusion": "success",
+        "databaseId": 118192870095,
+        "name": "container",
+        "startedAt": "2026-10-19T17:07:41Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-19T17:07:42Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-19T17:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:43Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-10-19T17:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:46Z",
+            "conclusion": "success",
+            "name": "Build isolated test image and run its suite",
+            "number": 3,
+            "startedAt": "2026-10-19T17:07:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:09:06Z",
+            "conclusion": "success",
+            "name": "Build serving image and verify its process health",
+            "number": 4,
+            "startedAt": "2026-10-19T17:08:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:09:06Z",
+            "conclusion": "success",
+            "name": "Container diagnostics and cleanup",
+            "number": 5,
+            "startedAt": "2026-10-19T17:09:06Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:09:06Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 10,
+            "startedAt": "2026-10-19T17:09:06Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:09:06Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-19T17:09:06Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39291459858/job/118192870095"
+      },
+      {
+        "completedAt": "2026-10-19T17:08:09Z",
+        "conclusion": "success",
+        "databaseId": 118192870295,
+        "name": "lint-and-typecheck",
+        "startedAt": "2026-10-19T17:07:41Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-19T17:07:43Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-19T17:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:44Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-10-19T17:07:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:45Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 3,
+            "startedAt": "2026-10-19T17:07:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:49Z",
+            "conclusion": "success",
+            "name": "Run uv sync --locked --extra dev",
+            "number": 4,
+            "startedAt": "2026-10-19T17:07:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:54Z",
+            "conclusion": "success",
+            "name": "Enforce lint, formatting and package typing",
+            "number": 5,
+            "startedAt": "2026-10-19T17:07:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:55Z",
+            "conclusion": "success",
+            "name": "Verify lockfile exports and dependency compatibility",
+            "number": 6,
+            "startedAt": "2026-10-19T17:07:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:58Z",
+            "conclusion": "success",
+            "name": "Audit pinned dependencies",
+            "number": 7,
+            "startedAt": "2026-10-19T17:07:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:59Z",
+            "conclusion": "success",
+            "name": "Build installable distributions",
+            "number": 8,
+            "startedAt": "2026-10-19T17:07:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:05Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 15,
+            "startedAt": "2026-10-19T17:07:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:05Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 16,
+            "startedAt": "2026-10-19T17:08:05Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:05Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 17,
+            "startedAt": "2026-10-19T17:08:05Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39291459858/job/118192870295"
+      },
+      {
+        "completedAt": "2026-10-19T17:08:33Z",
+        "conclusion": "success",
+        "databaseId": 118192870304,
+        "name": "unit-and-ui (ubuntu-latest, 3.10)",
+        "startedAt": "2026-10-19T17:07:41Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-19T17:07:44Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-19T17:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:45Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-10-19T17:07:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:47Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 3,
+            "startedAt": "2026-10-19T17:07:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:52Z",
+            "conclusion": "success",
+            "name": "Run uv sync --locked --extra dev",
+            "number": 4,
+            "startedAt": "2026-10-19T17:07:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:20Z",
+            "conclusion": "success",
+            "name": "Offline unit, workflow and Streamlit interaction tests",
+            "number": 5,
+            "startedAt": "2026-10-19T17:07:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:21Z",
+            "conclusion": "success",
+            "name": "Syntax and dependency checks",
+            "number": 6,
+            "startedAt": "2026-10-19T17:08:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:22Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "number": 7,
+            "startedAt": "2026-10-19T17:08:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:30Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 13,
+            "startedAt": "2026-10-19T17:08:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:31Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 14,
+            "startedAt": "2026-10-19T17:08:30Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:31Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-10-19T17:08:31Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39291459858/job/118192870304"
+      },
+      {
+        "completedAt": "2026-10-19T17:08:21Z",
+        "conclusion": "success",
+        "databaseId": 118192870311,
+        "name": "unit-and-ui (ubuntu-latest, 3.13)",
+        "startedAt": "2026-10-19T17:07:41Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-19T17:07:44Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-19T17:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:46Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-10-19T17:07:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:47Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 3,
+            "startedAt": "2026-10-19T17:07:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:52Z",
+            "conclusion": "success",
+            "name": "Run uv sync --locked --extra dev",
+            "number": 4,
+            "startedAt": "2026-10-19T17:07:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:14Z",
+            "conclusion": "success",
+            "name": "Offline unit, workflow and Streamlit interaction tests",
+            "number": 5,
+            "startedAt": "2026-10-19T17:07:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:14Z",
+            "conclusion": "success",
+            "name": "Syntax and dependency checks",
+            "number": 6,
+            "startedAt": "2026-10-19T17:08:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:16Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "number": 7,
+            "startedAt": "2026-10-19T17:08:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:18Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 13,
+            "startedAt": "2026-10-19T17:08:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:18Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 14,
+            "startedAt": "2026-10-19T17:08:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:18Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-10-19T17:08:18Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39291459858/job/118192870311"
+      },
+      {
+        "completedAt": "2026-10-19T17:08:58Z",
+        "conclusion": "success",
+        "databaseId": 118192870387,
+        "name": "unit-and-ui (windows-latest, 3.13)",
+        "startedAt": "2026-10-19T17:07:41Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-19T17:07:42Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-19T17:07:41Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:52Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-10-19T17:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:53Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 3,
+            "startedAt": "2026-10-19T17:07:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:02Z",
+            "conclusion": "success",
+            "name": "Run uv sync --locked --extra dev",
+            "number": 4,
+            "startedAt": "2026-10-19T17:07:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:45Z",
+            "conclusion": "success",
+            "name": "Offline unit, workflow and Streamlit interaction tests",
+            "number": 5,
+            "startedAt": "2026-10-19T17:08:02Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:46Z",
+            "conclusion": "success",
+            "name": "Syntax and dependency checks",
+            "number": 6,
+            "startedAt": "2026-10-19T17:08:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:47Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "number": 7,
+            "startedAt": "2026-10-19T17:08:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:53Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 13,
+            "startedAt": "2026-10-19T17:08:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:55Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 14,
+            "startedAt": "2026-10-19T17:08:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:56Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-10-19T17:08:55Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39291459858/job/118192870387"
+      },
+      {
+        "completedAt": "2026-10-19T17:08:32Z",
+        "conclusion": "success",
+        "databaseId": 118192870690,
+        "name": "unit-and-ui (windows-latest, 3.10)",
+        "startedAt": "2026-10-19T17:07:41Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-19T17:07:43Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-19T17:07:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:49Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-10-19T17:07:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:51Z",
+            "conclusion": "success",
+            "name": "Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 3,
+            "startedAt": "2026-10-19T17:07:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:07:57Z",
+            "conclusion": "success",
+            "name": "Run uv sync --locked --extra dev",
+            "number": 4,
+            "startedAt": "2026-10-19T17:07:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:22Z",
+            "conclusion": "success",
+            "name": "Offline unit, workflow and Streamlit interaction tests",
+            "number": 5,
+            "startedAt": "2026-10-19T17:07:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:23Z",
+            "conclusion": "success",
+            "name": "Syntax and dependency checks",
+            "number": 6,
+            "startedAt": "2026-10-19T17:08:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:23Z",
+            "conclusion": "success",
+            "name": "Run actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+            "number": 7,
+            "startedAt": "2026-10-19T17:08:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:29Z",
+            "conclusion": "success",
+            "name": "Post Run astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884",
+            "number": 13,
+            "startedAt": "2026-10-19T17:08:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:30Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 14,
+            "startedAt": "2026-10-19T17:08:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-19T17:08:30Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-10-19T17:08:30Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39291459858/job/118192870690"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39291459858"
+  },
+  "container_verification": "passed on GitHub Linux: development tests, runtime model/UI readiness, Compose configuration and process health",
+  "hosting": "deferred by user request",
+  "local_linux": {
+    "status": "passed",
+    "tests": 88,
+    "python": "3.13.14",
+    "seconds": 55.41,
+    "warnings": 6,
+    "combined_coverage_percent": 86.57495256166983
+  },
+  "portable_version": "1.2.1",
+  "portable_sha256": "32988a313897a9b98c68ca2175cc53b0ecf6a5e640c2ba688f524f9657cac5ea"
 }

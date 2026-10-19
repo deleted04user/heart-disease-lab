@@ -1,6 +1,6 @@
 # Execution verification
 
-## Engineering release 1.2.0 — 2026-10-19
+## Engineering release 1.2.1 — 2026-10-19
 
 - Windows/Python 3.13: **88 passed** in 38.23 seconds. Combined statement/branch
   coverage: **86.57%**, with no exclusions; CI enforces a minimum 85%.
@@ -13,9 +13,9 @@
   integrity, archive rejection, local health retries and publication exclusions.
 - Six visible third-party plotting deprecation warnings remain. They are not
   suppressed. No synthetic fixture results are used as experiment evidence.
-- Portable 1.2.0 passed isolated Windows and clean Linux verification. The five
+- Portable 1.2.1 passed isolated Windows and clean Linux verification. The five
   example probabilities match exactly; the fitted run and model bytes are unchanged.
-  Archive SHA-256: `74b4939fcf49f554a6d7520028f2c185c014874ca50177861e3e4f68a8b59940`.
+  Archive SHA-256: `32988a313897a9b98c68ca2175cc53b0ecf6a5e640c2ba688f524f9657cac5ea`.
 - The initial GitHub test matrix, real-data integration and portable verification
   have completed successfully. Current engineering/container CI evidence is
   recorded separately in `engineering_verification.json` and the Actions tab.

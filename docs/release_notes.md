@@ -1,4 +1,4 @@
-# Heart Disease Lab 1.2.0
+# Heart Disease Lab 1.2.1
 
 This engineering release preserves the fitted Random Forest run
 `27586d03470741438f644f6067b70f22`, its raw probabilities and fixed threshold.
@@ -13,7 +13,7 @@ This engineering release preserves the fitted Random Forest run
 - Portable archive verified on Windows and clean Linux with identical example predictions.
 
 The archive SHA-256 is
-`74b4939fcf49f554a6d7520028f2c185c014874ca50177861e3e4f68a8b59940`.
+`32988a313897a9b98c68ca2175cc53b0ecf6a5e640c2ba688f524f9657cac5ea`.
 Existing 1.1.0 assets remain unchanged. Public hosting remains deferred.
 
 Six third-party plotting deprecation warnings are recorded. Historical Hungarian
