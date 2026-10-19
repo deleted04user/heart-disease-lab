@@ -43,3 +43,11 @@ external results already seen must not become tuning targets. See the model
 card and `docs/next_experiment_protocol.md`.
 
 For container-based development and serving, see `docs/containers.md`.
+
+Before activating a saved completed experiment, run
+`python scripts/verify_experiment.py experiments/runs/<timestamp>-<id>`.
+Training runs the same verifier before copying active artifacts. Do not add
+files to a completed snapshot; diagnostics or changes belong in a separate run.
+The manual real-data workflow installs from the same uv lock as development;
+portable verification uses the complete hashed serving lock. All workflow
+actions are pinned to full commit hashes.

@@ -11,26 +11,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v7.0.0
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
         with:
+          version: '0.13.0'
           python-version: '3.13'
-          cache: pip
+          enable-cache: true
       - name: Install project
-        run: python -m pip install -r requirements.txt -e .
+        run: uv sync --locked --extra dev
       - name: Obtain the two official sources
         run: |
-          python scripts/download_data.py
-          python scripts/download_external.py
+          uv run --locked python scripts/download_data.py
+          uv run --locked python scripts/download_external.py
       - name: Full training and audited transfer check
-        run: python scripts/train.py --external data/raw/processed.hungarian.data
+        run: uv run --locked python scripts/train.py --external data/raw/processed.hungarian.data
+      - name: Verify immutable experiment without deserialization
+        shell: bash
+        run: |
+          run_dir=$(uv run --locked python -c "import json; print(json.load(open('reports/active_run.json'))['run_dir'])")
+          uv run --locked python scripts/verify_experiment.py "$run_dir"
       - name: Verify reports, reloaded metrics and populated UI
-        run: python scripts/verify_run.py --require-external
+        run: uv run --locked python scripts/verify_run.py --require-external
       - name: Retain aggregate evidence (no raw data or models)
         if: always()
-        uses: actions/upload-artifact@v7.0.2
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: heart-disease-aggregate-reports
           path: reports/
