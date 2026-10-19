@@ -1,0 +1,32 @@
+# Permit only source, public aggregate reports, licenses and development inputs.
+**
+!pyproject.toml
+!uv.lock
+!requirements.txt
+!requirements-lock.txt
+!README.md
+!LICENSE
+!NOTICE.md
+!.env.example
+!app.py
+!src/
+!src/**
+!scripts/
+!scripts/**
+!tests/
+!tests/**
+!deploy/
+!deploy/**
+!.streamlit/
+!.streamlit/config.toml
+!reports/
+!reports/**
+!docs/
+!docs/next_experiment_protocol.md
+!Dockerfile
+# Never send private data, local artifacts, caches or credentials to a builder.
+**/__pycache__/**
+**/*.egg-info/**
+**/*.pyc
+reports/active_run.json
+.streamlit/secrets.toml

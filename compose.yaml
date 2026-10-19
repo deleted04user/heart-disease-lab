@@ -1,0 +1,16 @@
+services:
+  demo:
+    build:
+      context: .
+      target: runtime
+    ports:
+      - "127.0.0.1:8502:8501"
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /app/.deployment-cache:uid=10001,gid=10001,mode=0700
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL

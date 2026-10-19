@@ -71,3 +71,26 @@ jobs:
           path: coverage.xml
           retention-days: 14
 
+  container:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Build isolated test image and run its suite
+        run: |
+          docker build --target development -t heart-disease-tests .
+          docker run --rm heart-disease-tests
+      - name: Build serving image and verify its process health
+        run: |
+          docker build --target runtime -t heart-disease-demo .
+          docker run --rm heart-disease-demo python scripts/verify_cloud.py
+          docker compose config --quiet
+          docker run -d --name heart-disease-demo -p 127.0.0.1:8502:8501 heart-disease-demo
+          python scripts/verify_container.py --url http://127.0.0.1:8502 --timeout 60
+      - name: Container diagnostics and cleanup
+        if: always()
+        run: |
+          docker logs heart-disease-demo 2>/dev/null || true
+          docker rm -f heart-disease-demo 2>/dev/null || true
