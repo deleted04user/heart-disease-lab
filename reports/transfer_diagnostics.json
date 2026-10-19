@@ -1,0 +1,172 @@
+{
+  "run_id": "27586d03470741438f644f6067b70f22",
+  "model_sha256": "e4b0ba8ab0a23ab81ff1fd53dd03ff326766089a2556bfe3a49fb8e1c5e889c7",
+  "training_source_sha256": "a74b7efa387bc9d108d7d0115d831fe9b414b29ae7124f331b622b4efa0427c8",
+  "external_source_sha256": "d1ad108f785768cd3d7e82dc522e6f5a61eea93cccfb3a46ee8076f73fc3d796",
+  "fitting_rows": 242,
+  "holdout_rows_used_for_fitting_or_selection": 0,
+  "external_rows_used_for_fitting_or_selection": 0,
+  "training_only_stress": [
+    {
+      "condition": "Unmodified validation records",
+      "records": 242,
+      "accuracy": 0.8099173553719008,
+      "recall": 0.7837837837837838,
+      "specificity": 0.8320610687022901,
+      "roc_auc": 0.8980125163331271
+    },
+    {
+      "condition": "Mask ca and thal in validation",
+      "records": 242,
+      "accuracy": 0.6446280991735537,
+      "recall": 0.27927927927927926,
+      "specificity": 0.9541984732824428,
+      "roc_auc": 0.8185131696582079
+    },
+    {
+      "condition": "Mask ca, thal and slope in validation",
+      "records": 242,
+      "accuracy": 0.640495867768595,
+      "recall": 0.21621621621621623,
+      "specificity": 1.0,
+      "roc_auc": 0.8085413657932742
+    }
+  ],
+  "missingness": [
+    {
+      "feature": "age",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.0
+    },
+    {
+      "feature": "sex",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.0
+    },
+    {
+      "feature": "cp",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.0
+    },
+    {
+      "feature": "trestbps",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.0034129692832764505
+    },
+    {
+      "feature": "chol",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.07508532423208192
+    },
+    {
+      "feature": "fbs",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.027303754266211604
+    },
+    {
+      "feature": "restecg",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.0034129692832764505
+    },
+    {
+      "feature": "thalach",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.0034129692832764505
+    },
+    {
+      "feature": "exang",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.0034129692832764505
+    },
+    {
+      "feature": "oldpeak",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.0
+    },
+    {
+      "feature": "slope",
+      "cleveland_training_missing_fraction": 0.0,
+      "hungarian_missing_fraction": 0.6450511945392492
+    },
+    {
+      "feature": "ca",
+      "cleveland_training_missing_fraction": 0.004132231404958678,
+      "hungarian_missing_fraction": 0.9897610921501706
+    },
+    {
+      "feature": "thal",
+      "cleveland_training_missing_fraction": 0.004132231404958678,
+      "hungarian_missing_fraction": 0.9044368600682594
+    }
+  ],
+  "observed_external_slices": [
+    {
+      "feature": "ca",
+      "state": "observed",
+      "n": 3,
+      "positive_n": 1,
+      "true_positive_n": 1,
+      "recall": 1.0,
+      "recall_lower": 0.20654931437723745,
+      "recall_upper": 1.0,
+      "caution": "Observational slice; selection/confounding prevents causal attribution"
+    },
+    {
+      "feature": "ca",
+      "state": "missing",
+      "n": 290,
+      "positive_n": 105,
+      "true_positive_n": 51,
+      "recall": 0.4857142857142857,
+      "recall_lower": 0.3923218916770114,
+      "recall_upper": 0.5801150819495344,
+      "caution": "Observational slice; selection/confounding prevents causal attribution"
+    },
+    {
+      "feature": "thal",
+      "state": "observed",
+      "n": 28,
+      "positive_n": 13,
+      "true_positive_n": 7,
+      "recall": 0.5384615384615384,
+      "recall_lower": 0.29143795714506004,
+      "recall_upper": 0.7679393219046169,
+      "caution": "Observational slice; selection/confounding prevents causal attribution"
+    },
+    {
+      "feature": "thal",
+      "state": "missing",
+      "n": 265,
+      "positive_n": 93,
+      "true_positive_n": 45,
+      "recall": 0.4838709677419355,
+      "recall_lower": 0.3849770248295384,
+      "recall_upper": 0.5840445075127757,
+      "caution": "Observational slice; selection/confounding prevents causal attribution"
+    },
+    {
+      "feature": "slope",
+      "state": "observed",
+      "n": 104,
+      "positive_n": 73,
+      "true_positive_n": 51,
+      "recall": 0.6986301369863014,
+      "recall_lower": 0.5856263409869292,
+      "recall_upper": 0.7917740942087393,
+      "caution": "Observational slice; selection/confounding prevents causal attribution"
+    },
+    {
+      "feature": "slope",
+      "state": "missing",
+      "n": 189,
+      "positive_n": 33,
+      "true_positive_n": 1,
+      "recall": 0.030303030303030304,
+      "recall_lower": 0.005369410536871844,
+      "recall_upper": 0.15318725382118914,
+      "caution": "Observational slice; selection/confounding prevents causal attribution"
+    }
+  ],
+  "interpretation": "Stress checks mask predictors on genuine training-fold validation observations. They are controlled perturbations, not a new natural cohort or fabricated dataset. Changes show dependence on feature availability, not proof that missingness alone caused the Hungarian recall gap. Site selection, class prevalence, covariate differences and missingness mechanisms remain confounded. Observed external slices may be tiny and must not select models or thresholds.",
+  "deployment_model_changed": false
+}

@@ -1,0 +1,14 @@
+{
+  "status": "reserved_not_inspected",
+  "source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.va.data",
+  "path": "data/reserved/processed.va.data",
+  "bytes": 6737,
+  "sha256": "e7c93d8d0d2acdadfa4c5e8de768e2191e7f618b952e29623f1f0d5949ff6b8f",
+  "protocol": "docs/next_experiment_protocol.md",
+  "protocol_sha256": "ca525c282c990bb0f208f6b1cf5a4366720aa26dfa7bdcaab7b061d7ed447c6c",
+  "retrieved_utc": "2026-10-19T15:24:41.979306+00:00",
+  "labels_inspected": false,
+  "schema_inspected": false,
+  "model_evaluated": false,
+  "purpose": "Future fixed-protocol confirmation only; not included in training, diagnostics, release bundles or public Git history"
+}

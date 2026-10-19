@@ -1,0 +1,108 @@
+{
+  "source": {
+    "source": "UCI Machine Learning Repository",
+    "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data",
+    "retrieved_utc": "2026-10-19T14:10:39.194010+00:00",
+    "sha256": "a74b7efa387bc9d108d7d0115d831fe9b414b29ae7124f331b622b4efa0427c8"
+  },
+  "reference_url": "https://archive.ics.uci.edu/dataset/45/heart+disease",
+  "variant": "UCI original processed Cleveland (303 records verified)",
+  "schema": "uci",
+  "site": null,
+  "path": "data\\raw\\processed.cleveland.data",
+  "sha256": "a74b7efa387bc9d108d7d0115d831fe9b414b29ae7124f331b622b4efa0427c8",
+  "raw_rows": 303,
+  "raw_columns": 14,
+  "selected_rows": 303,
+  "excluded_other_sites": 0,
+  "rows": 303,
+  "columns": 14,
+  "feature_count": 13,
+  "duplicates_removed": 0,
+  "original_target_column": "num",
+  "original_target_counts": {
+    "0": 164,
+    "1": 55,
+    "2": 36,
+    "3": 35,
+    "4": 13
+  },
+  "target_semantics": "uci",
+  "target_mapping": "0 \u2192 0; 1,2,3,4 \u2192 1",
+  "target_distribution": {
+    "0": 164,
+    "1": 139
+  },
+  "missing_values": {
+    "age": 0,
+    "sex": 0,
+    "cp": 0,
+    "trestbps": 0,
+    "chol": 0,
+    "fbs": 0,
+    "restecg": 0,
+    "thalach": 0,
+    "exang": 0,
+    "oldpeak": 0,
+    "slope": 0,
+    "ca": 4,
+    "thal": 2,
+    "target": 0
+  },
+  "observed_ranges": {
+    "age": {
+      "min": 29.0,
+      "max": 77.0
+    },
+    "sex": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "cp": {
+      "min": 1.0,
+      "max": 4.0
+    },
+    "trestbps": {
+      "min": 94.0,
+      "max": 200.0
+    },
+    "chol": {
+      "min": 126.0,
+      "max": 564.0
+    },
+    "fbs": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "restecg": {
+      "min": 0.0,
+      "max": 2.0
+    },
+    "thalach": {
+      "min": 71.0,
+      "max": 202.0
+    },
+    "exang": {
+      "min": 0.0,
+      "max": 1.0
+    },
+    "oldpeak": {
+      "min": 0.0,
+      "max": 6.2
+    },
+    "slope": {
+      "min": 1.0,
+      "max": 3.0
+    },
+    "ca": {
+      "min": 0.0,
+      "max": 3.0
+    },
+    "thal": {
+      "min": 3.0,
+      "max": 7.0
+    }
+  },
+  "notes": [],
+  "records_corrected": 0
+}

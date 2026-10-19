@@ -1,0 +1,7 @@
+feature,state,n,positive_n,true_positive_n,recall,recall_lower,recall_upper,caution
+ca,observed,3,1,1,1.0,0.20654931437723745,1.0,Observational slice; selection/confounding prevents causal attribution
+ca,missing,290,105,51,0.4857142857142857,0.3923218916770114,0.5801150819495344,Observational slice; selection/confounding prevents causal attribution
+thal,observed,28,13,7,0.5384615384615384,0.29143795714506004,0.7679393219046169,Observational slice; selection/confounding prevents causal attribution
+thal,missing,265,93,45,0.4838709677419355,0.3849770248295384,0.5840445075127757,Observational slice; selection/confounding prevents causal attribution
+slope,observed,104,73,51,0.6986301369863014,0.5856263409869292,0.7917740942087393,Observational slice; selection/confounding prevents causal attribution
+slope,missing,189,33,1,0.030303030303030304,0.005369410536871844,0.15318725382118914,Observational slice; selection/confounding prevents causal attribution

@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "os": "Windows",
+  "python": "3.13.14",
+  "run_id": "27586d03470741438f644f6067b70f22",
+  "examples": 5,
+  "probabilities": [
+    0.34640497751727617,
+    0.8957624386827486,
+    0.9636247646010232,
+    0.19452494981305093,
+    0.026385610359161142
+  ],
+  "checks": [
+    "portable package origin",
+    "no raw dataset required",
+    "artifact checksum and versions",
+    "all dashboard pages",
+    "public-only input controls",
+    "two public examples predicted",
+    "form/API consistency"
+  ],
+  "bundle_sha256": "f4702bf1fac3f690cbf5e62fcc7d1b078d892bef2435429a57960acbf54b4fd7"
+}

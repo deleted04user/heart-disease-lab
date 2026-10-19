@@ -1,0 +1,32 @@
+name: Portable release verification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clean-linux-portable:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: deploy/requirements.txt
+      - name: Install serving dependencies only
+        run: python -m pip install -r deploy/requirements.txt
+      - name: Download the pinned published archive
+        run: python scripts/download_release.py
+      - name: Verify without the original source data or editable package
+        run: python scripts/verify_release.py --output reports/portable_ci_verification.json
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: portable-linux-verification
+          path: reports/portable_ci_verification.json
+          retention-days: 14

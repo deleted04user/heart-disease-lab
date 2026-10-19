@@ -1,0 +1,345 @@
+{
+  "run_id": "27586d03470741438f644f6067b70f22",
+  "selected_method": "raw",
+  "outer_folds": 5,
+  "outer_repeats": 3,
+  "inner_folds_max": 3,
+  "training_rows": 242,
+  "score_sd_ddof": 1,
+  "selection_rule": "Retain sigmoid only if paired outer-CV mean Brier improves by >=0.002 and mean log loss also decreases; otherwise retain raw. All fitting and selection use training only.",
+  "fold_scores": [
+    {
+      "method": "raw",
+      "repeat": 1,
+      "fold": 1,
+      "brier": 0.10823795716745432,
+      "log_loss": 0.36318023170736075
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 1,
+      "fold": 1,
+      "brier": 0.1012271415797339,
+      "log_loss": 0.34079333684423946
+    },
+    {
+      "method": "raw",
+      "repeat": 1,
+      "fold": 2,
+      "brier": 0.1279396386366737,
+      "log_loss": 0.4115154731873153
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 1,
+      "fold": 2,
+      "brier": 0.12569485543395859,
+      "log_loss": 0.40149006839767837
+    },
+    {
+      "method": "raw",
+      "repeat": 1,
+      "fold": 3,
+      "brier": 0.14071417084645896,
+      "log_loss": 0.4291322904779602
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 1,
+      "fold": 3,
+      "brier": 0.14206951489099903,
+      "log_loss": 0.4327004893507065
+    },
+    {
+      "method": "raw",
+      "repeat": 1,
+      "fold": 4,
+      "brier": 0.13212965005312416,
+      "log_loss": 0.4168763522212548
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 1,
+      "fold": 4,
+      "brier": 0.130278227084507,
+      "log_loss": 0.40918702496363
+    },
+    {
+      "method": "raw",
+      "repeat": 1,
+      "fold": 5,
+      "brier": 0.14268287541770716,
+      "log_loss": 0.43805065709890006
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 1,
+      "fold": 5,
+      "brier": 0.1341233434728478,
+      "log_loss": 0.42132509547686964
+    },
+    {
+      "method": "raw",
+      "repeat": 2,
+      "fold": 1,
+      "brier": 0.15016189944708183,
+      "log_loss": 0.4494318616162884
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 2,
+      "fold": 1,
+      "brier": 0.15460357283543996,
+      "log_loss": 0.4632851937586254
+    },
+    {
+      "method": "raw",
+      "repeat": 2,
+      "fold": 2,
+      "brier": 0.14797512520755537,
+      "log_loss": 0.4473625540314621
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 2,
+      "fold": 2,
+      "brier": 0.14777231737844806,
+      "log_loss": 0.4482768695884386
+    },
+    {
+      "method": "raw",
+      "repeat": 2,
+      "fold": 3,
+      "brier": 0.1418206527461645,
+      "log_loss": 0.435431779031865
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 2,
+      "fold": 3,
+      "brier": 0.14871677646276935,
+      "log_loss": 0.45063064066453434
+    },
+    {
+      "method": "raw",
+      "repeat": 2,
+      "fold": 4,
+      "brier": 0.17275212957923305,
+      "log_loss": 0.5197631263013668
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 2,
+      "fold": 4,
+      "brier": 0.17776923645095835,
+      "log_loss": 0.5361943134699655
+    },
+    {
+      "method": "raw",
+      "repeat": 2,
+      "fold": 5,
+      "brier": 0.08998825664299155,
+      "log_loss": 0.3242923743831998
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 2,
+      "fold": 5,
+      "brier": 0.07986559967914149,
+      "log_loss": 0.29463984214130584
+    },
+    {
+      "method": "raw",
+      "repeat": 3,
+      "fold": 1,
+      "brier": 0.08794182793750327,
+      "log_loss": 0.3074678129601854
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 3,
+      "fold": 1,
+      "brier": 0.08724085141554251,
+      "log_loss": 0.3096986764643333
+    },
+    {
+      "method": "raw",
+      "repeat": 3,
+      "fold": 2,
+      "brier": 0.15510668848617554,
+      "log_loss": 0.4762843361062122
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 3,
+      "fold": 2,
+      "brier": 0.15551346553535547,
+      "log_loss": 0.47355576911687647
+    },
+    {
+      "method": "raw",
+      "repeat": 3,
+      "fold": 3,
+      "brier": 0.13032680974377994,
+      "log_loss": 0.39834412733148056
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 3,
+      "fold": 3,
+      "brier": 0.13530856337148475,
+      "log_loss": 0.4139275078715236
+    },
+    {
+      "method": "raw",
+      "repeat": 3,
+      "fold": 4,
+      "brier": 0.12330238272274292,
+      "log_loss": 0.41110790241790757
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 3,
+      "fold": 4,
+      "brier": 0.12262838074760497,
+      "log_loss": 0.4011364810008837
+    },
+    {
+      "method": "raw",
+      "repeat": 3,
+      "fold": 5,
+      "brier": 0.15100011653565892,
+      "log_loss": 0.4625512635786744
+    },
+    {
+      "method": "sigmoid",
+      "repeat": 3,
+      "fold": 5,
+      "brier": 0.14786564823818868,
+      "log_loss": 0.4556699771887289
+    }
+  ],
+  "summary": [
+    {
+      "method": "raw",
+      "brier_mean": 0.13347201207802034,
+      "brier_sd": 0.02354390659944542,
+      "log_loss_mean": 0.41938614283009557,
+      "log_loss_sd": 0.055336369828220947
+    },
+    {
+      "method": "sigmoid",
+      "brier_mean": 0.13271183297179864,
+      "brier_sd": 0.026520484245487908,
+      "log_loss_mean": 0.41683408575322267,
+      "log_loss_sd": 0.06339970533992605
+    }
+  ],
+  "reliability": {
+    "raw": [
+      {
+        "bin": 1,
+        "lower_edge": 0.0,
+        "upper_edge": 0.2,
+        "n": 61,
+        "mean_probability": 0.10354117336780985,
+        "positive_fraction": 0.04918032786885246,
+        "lower": 0.0168659826687624,
+        "upper": 0.13491127527215896
+      },
+      {
+        "bin": 2,
+        "lower_edge": 0.2,
+        "upper_edge": 0.4,
+        "n": 57,
+        "mean_probability": 0.28737439744060256,
+        "positive_fraction": 0.2982456140350877,
+        "lower": 0.19532550074818095,
+        "upper": 0.4266428010346
+      },
+      {
+        "bin": 3,
+        "lower_edge": 0.4,
+        "upper_edge": 0.6000000000000001,
+        "n": 37,
+        "mean_probability": 0.49705809980321825,
+        "positive_fraction": 0.32432432432432434,
+        "lower": 0.19633266528144183,
+        "upper": 0.48536332758027795
+      },
+      {
+        "bin": 4,
+        "lower_edge": 0.6000000000000001,
+        "upper_edge": 0.8,
+        "n": 41,
+        "mean_probability": 0.703217715226318,
+        "positive_fraction": 0.8292682926829268,
+        "lower": 0.6873738759959582,
+        "upper": 0.9147474802240501
+      },
+      {
+        "bin": 5,
+        "lower_edge": 0.8,
+        "upper_edge": 1.0,
+        "n": 46,
+        "mean_probability": 0.8949893703232096,
+        "positive_fraction": 0.9782608695652174,
+        "lower": 0.8866470547848865,
+        "upper": 0.9961521457419497
+      }
+    ],
+    "sigmoid": [
+      {
+        "bin": 1,
+        "lower_edge": 0.0,
+        "upper_edge": 0.2,
+        "n": 76,
+        "mean_probability": 0.11032409544184851,
+        "positive_fraction": 0.10526315789473684,
+        "lower": 0.05431126182821912,
+        "upper": 0.19419946322320508
+      },
+      {
+        "bin": 2,
+        "lower_edge": 0.2,
+        "upper_edge": 0.4,
+        "n": 49,
+        "mean_probability": 0.28627031923300267,
+        "positive_fraction": 0.2857142857142857,
+        "lower": 0.17849594458812607,
+        "upper": 0.424088835077801
+      },
+      {
+        "bin": 3,
+        "lower_edge": 0.4,
+        "upper_edge": 0.6000000000000001,
+        "n": 22,
+        "mean_probability": 0.5093980616398813,
+        "positive_fraction": 0.36363636363636365,
+        "lower": 0.19733204670366125,
+        "upper": 0.5704829190986899
+      },
+      {
+        "bin": 4,
+        "lower_edge": 0.6000000000000001,
+        "upper_edge": 0.8,
+        "n": 34,
+        "mean_probability": 0.6950523681530246,
+        "positive_fraction": 0.7058823529411765,
+        "lower": 0.5383109020528557,
+        "upper": 0.8316536932957758
+      },
+      {
+        "bin": 5,
+        "lower_edge": 0.8,
+        "upper_edge": 1.0,
+        "n": 61,
+        "mean_probability": 0.8876776177029947,
+        "positive_fraction": 0.9344262295081968,
+        "lower": 0.8431719832010424,
+        "upper": 0.9742062955104335
+      }
+    ]
+  },
+  "caution": "Brier and log loss measure overall probability quality, not calibration alone. Reliability curves use per-observation mean repeated out-of-fold probabilities; they describe CV ensembles, not the final fitted model. Bin intervals are descriptive and ignore training dependence. Folds/repeats are correlated; score SD is not a confidence interval. Isotonic omitted because the calibration sample is small. Calibration is not clinical validation."
+}

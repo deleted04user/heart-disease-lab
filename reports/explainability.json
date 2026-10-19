@@ -1,0 +1,75 @@
+{
+  "run_id": "27586d03470741438f644f6067b70f22",
+  "method": "Original-feature permutation importance on final test set; ROC-AUC decrease",
+  "repeats": 20,
+  "seed": 42,
+  "test_rows": 61,
+  "features": [
+    {
+      "feature": "ca",
+      "importance_mean": 0.04350649350649364,
+      "importance_std": 0.01319547696873065
+    },
+    {
+      "feature": "cp",
+      "importance_mean": 0.04090909090909102,
+      "importance_std": 0.012558776563098404
+    },
+    {
+      "feature": "oldpeak",
+      "importance_mean": 0.020400432900432995,
+      "importance_std": 0.008229912871020133
+    },
+    {
+      "feature": "exang",
+      "importance_mean": 0.019047619047619174,
+      "importance_std": 0.005404758003975669
+    },
+    {
+      "feature": "thal",
+      "importance_mean": 0.015963203463203596,
+      "importance_std": 0.012736007802863384
+    },
+    {
+      "feature": "thalach",
+      "importance_mean": 0.010010822510822632,
+      "importance_std": 0.005776372581551144
+    },
+    {
+      "feature": "slope",
+      "importance_mean": 0.010010822510822626,
+      "importance_std": 0.008837923685639114
+    },
+    {
+      "feature": "age",
+      "importance_mean": 0.006060606060606183,
+      "importance_std": 0.004169125602653332
+    },
+    {
+      "feature": "restecg",
+      "importance_mean": 0.00411255411255419,
+      "importance_std": 0.002041987258020893
+    },
+    {
+      "feature": "trestbps",
+      "importance_mean": 0.0011904761904762806,
+      "importance_std": 0.0015267030281023567
+    },
+    {
+      "feature": "chol",
+      "importance_mean": 0.0007575757575758568,
+      "importance_std": 0.0026086516868384997
+    },
+    {
+      "feature": "fbs",
+      "importance_mean": 0.0003787878787879451,
+      "importance_std": 0.0015410206564824825
+    },
+    {
+      "feature": "sex",
+      "importance_mean": -0.00027056277056268784,
+      "importance_std": 0.006149576923660995
+    }
+  ],
+  "caution": "Descriptive only; correlated features share importance. Negative importance can occur. Repeat SD is not sampling uncertainty. No causal or clinical interpretation."
+}

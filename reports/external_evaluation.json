@@ -1,0 +1,440 @@
+{
+  "run_id": "27586d03470741438f644f6067b70f22",
+  "status": "evaluated",
+  "cohort": "UCI processed Hungarian",
+  "data": {
+    "source": {
+      "source": "UCI Machine Learning Repository \u00b7 processed Hungarian cohort",
+      "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.hungarian.data",
+      "member": "processed.hungarian.data",
+      "retrieved_utc": "2026-10-19T14:26:39.510547+00:00",
+      "sha256": "d1ad108f785768cd3d7e82dc522e6f5a61eea93cccfb3a46ee8076f73fc3d796"
+    },
+    "reference_url": "https://archive.ics.uci.edu/dataset/45/heart+disease",
+    "variant": "UCI original processed Hungarian (294 source rows verified)",
+    "schema": "uci",
+    "site": null,
+    "path": "data\\raw\\processed.hungarian.data",
+    "sha256": "d1ad108f785768cd3d7e82dc522e6f5a61eea93cccfb3a46ee8076f73fc3d796",
+    "raw_rows": 294,
+    "raw_columns": 14,
+    "selected_rows": 294,
+    "excluded_other_sites": 0,
+    "rows": 293,
+    "columns": 14,
+    "feature_count": 13,
+    "duplicates_removed": 1,
+    "original_target_column": "num",
+    "original_target_counts": {
+      "0": 188,
+      "1": 106
+    },
+    "target_semantics": "uci",
+    "target_mapping": "0 \u2192 0; 1,2,3,4 \u2192 1",
+    "target_distribution": {
+      "0": 187,
+      "1": 106
+    },
+    "missing_values": {
+      "age": 0,
+      "sex": 0,
+      "cp": 0,
+      "trestbps": 1,
+      "chol": 22,
+      "fbs": 8,
+      "restecg": 1,
+      "thalach": 1,
+      "exang": 1,
+      "oldpeak": 0,
+      "slope": 189,
+      "ca": 290,
+      "thal": 265,
+      "target": 0
+    },
+    "observed_ranges": {
+      "age": {
+        "min": 28.0,
+        "max": 66.0
+      },
+      "sex": {
+        "min": 0.0,
+        "max": 1.0
+      },
+      "cp": {
+        "min": 1.0,
+        "max": 4.0
+      },
+      "trestbps": {
+        "min": 92.0,
+        "max": 200.0
+      },
+      "chol": {
+        "min": 85.0,
+        "max": 603.0
+      },
+      "fbs": {
+        "min": 0.0,
+        "max": 1.0
+      },
+      "restecg": {
+        "min": 0.0,
+        "max": 2.0
+      },
+      "thalach": {
+        "min": 82.0,
+        "max": 190.0
+      },
+      "exang": {
+        "min": 0.0,
+        "max": 1.0
+      },
+      "oldpeak": {
+        "min": 0.0,
+        "max": 5.0
+      },
+      "slope": {
+        "min": 1.0,
+        "max": 3.0
+      },
+      "ca": {
+        "min": 0.0,
+        "max": 0.0
+      },
+      "thal": {
+        "min": 3.0,
+        "max": 7.0
+      }
+    },
+    "notes": [
+      "Removed 1 exact duplicate normalized records before splitting to prevent leakage."
+    ],
+    "records_corrected": 0
+  },
+  "rows_evaluated": 293,
+  "overlapping_normalized_row_indices_excluded": [],
+  "exclusions": {
+    "exact_duplicates": 1,
+    "feature_overlap_with_cleveland": 0,
+    "invalid_rows_silently_removed": 0
+  },
+  "target_distribution": {
+    "0": 187,
+    "1": 106
+  },
+  "missingness": {
+    "age": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "sex": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "cp": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "trestbps": {
+      "count": 1,
+      "fraction": 0.0034129692832764505
+    },
+    "chol": {
+      "count": 22,
+      "fraction": 0.07508532423208192
+    },
+    "fbs": {
+      "count": 8,
+      "fraction": 0.027303754266211604
+    },
+    "restecg": {
+      "count": 1,
+      "fraction": 0.0034129692832764505
+    },
+    "thalach": {
+      "count": 1,
+      "fraction": 0.0034129692832764505
+    },
+    "exang": {
+      "count": 1,
+      "fraction": 0.0034129692832764505
+    },
+    "oldpeak": {
+      "count": 0,
+      "fraction": 0.0
+    },
+    "slope": {
+      "count": 189,
+      "fraction": 0.6450511945392492
+    },
+    "ca": {
+      "count": 290,
+      "fraction": 0.9897610921501706
+    },
+    "thal": {
+      "count": 265,
+      "fraction": 0.9044368600682594
+    }
+  },
+  "outside_cleveland_observed_ranges": {
+    "age": 1,
+    "sex": 0,
+    "cp": 0,
+    "trestbps": 1,
+    "chol": 4,
+    "fbs": 0,
+    "restecg": 0,
+    "thalach": 0,
+    "exang": 0,
+    "oldpeak": 0,
+    "slope": 0,
+    "ca": 0,
+    "thal": 0
+  },
+  "metrics": {
+    "accuracy": 0.7952218430034129,
+    "precision": 0.896551724137931,
+    "recall": 0.49056603773584906,
+    "f1": 0.6341463414634146,
+    "specificity": 0.9679144385026738,
+    "roc_auc": 0.8987488648975885,
+    "confusion_matrix": [
+      [
+        181,
+        6
+      ],
+      [
+        54,
+        52
+      ]
+    ],
+    "tn": 181,
+    "fp": 6,
+    "fn": 54,
+    "tp": 52,
+    "class_report": {
+      "0: absence": {
+        "precision": 0.7702127659574468,
+        "recall": 0.9679144385026738,
+        "f1-score": 0.8578199052132701,
+        "support": 187.0
+      },
+      "1: presence": {
+        "precision": 0.896551724137931,
+        "recall": 0.49056603773584906,
+        "f1-score": 0.6341463414634146,
+        "support": 106.0
+      },
+      "accuracy": 0.7952218430034129,
+      "macro avg": {
+        "precision": 0.8333822450476889,
+        "recall": 0.7292402381192614,
+        "f1-score": 0.7459831233383424,
+        "support": 293.0
+      },
+      "weighted avg": {
+        "precision": 0.8159190102138677,
+        "recall": 0.7952218430034129,
+        "f1-score": 0.7769004589419913,
+        "support": 293.0
+      }
+    }
+  },
+  "probability_scores": {
+    "brier": 0.1432814746341371,
+    "log_loss": 0.44584733758944645
+  },
+  "uncertainty": {
+    "confidence": 0.95,
+    "metrics": {
+      "accuracy": {
+        "estimate": 0.7952218430034129,
+        "lower": 0.7453363938237407,
+        "upper": 0.8374662938038655,
+        "n": 293,
+        "method": "Wilson"
+      },
+      "precision": {
+        "estimate": 0.896551724137931,
+        "lower": 0.7921189700751577,
+        "upper": 0.951718592576371,
+        "n": 58,
+        "method": "Wilson"
+      },
+      "recall": {
+        "estimate": 0.49056603773584906,
+        "lower": 0.39740700785165506,
+        "upper": 0.5843849309893538,
+        "n": 106,
+        "method": "Wilson"
+      },
+      "specificity": {
+        "estimate": 0.9679144385026738,
+        "lower": 0.9317779570159489,
+        "upper": 0.9852135661122722,
+        "n": 187,
+        "method": "Wilson"
+      },
+      "roc_auc": {
+        "estimate": 0.8987488648975885,
+        "lower": 0.8541935727979012,
+        "upper": 0.9366562405408132,
+        "n": 293,
+        "method": "Stratified percentile bootstrap",
+        "resamples": 1000,
+        "seed": 42
+      }
+    },
+    "caution": "Conditional on this fixed fitted model and sampled cohort. Does not include training, selection, site, or measurement uncertainty. AUC bootstrap preserves observed class counts. Wilson precision/accuracy can change with prevalence. Intervals do not establish clinical safety."
+  },
+  "subgroups": [
+    {
+      "attribute": "Recorded sex",
+      "group": "Female (0)",
+      "n": 80,
+      "positive_n": 12,
+      "negative_n": 68,
+      "accuracy": 0.8625,
+      "recall": 0.3333333333333333,
+      "specificity": 0.9558823529411765,
+      "precision": 0.5714285714285714,
+      "roc_auc": 0.8431372549019608,
+      "accuracy_lower": 0.7703289993301341,
+      "accuracy_upper": 0.9214528567566089,
+      "recall_lower": 0.1381200910912132,
+      "recall_upper": 0.6093779111272004,
+      "specificity_lower": 0.8781280481750362,
+      "specificity_upper": 0.9848833802919585,
+      "caution": "Descriptive; no fairness or equivalence claim"
+    },
+    {
+      "attribute": "Recorded sex",
+      "group": "Male (1)",
+      "n": 213,
+      "positive_n": 94,
+      "negative_n": 119,
+      "accuracy": 0.7699530516431925,
+      "recall": 0.5106382978723404,
+      "specificity": 0.9747899159663865,
+      "precision": 0.9411764705882353,
+      "roc_auc": 0.8976399070266404,
+      "accuracy_lower": 0.7089502494748566,
+      "accuracy_upper": 0.8213911373864692,
+      "recall_lower": 0.41116886151084975,
+      "recall_upper": 0.6092723709084791,
+      "specificity_lower": 0.9284951063536422,
+      "specificity_upper": 0.9913897687107347,
+      "caution": "Descriptive; no fairness or equivalence claim"
+    },
+    {
+      "attribute": "Age",
+      "group": "Under 50",
+      "n": 160,
+      "positive_n": 52,
+      "negative_n": 108,
+      "accuracy": 0.8125,
+      "recall": 0.4230769230769231,
+      "specificity": 1.0,
+      "precision": 1.0,
+      "roc_auc": 0.8997507122507122,
+      "accuracy_lower": 0.7449603968476121,
+      "accuracy_upper": 0.8653857311701972,
+      "recall_lower": 0.29868052083500907,
+      "recall_upper": 0.5580567462609697,
+      "specificity_lower": 0.9656526402534428,
+      "specificity_upper": 1.0,
+      "caution": "Descriptive; no fairness or equivalence claim"
+    },
+    {
+      "attribute": "Age",
+      "group": "50\u201359",
+      "n": 122,
+      "positive_n": 48,
+      "negative_n": 74,
+      "accuracy": 0.7868852459016393,
+      "recall": 0.5416666666666666,
+      "specificity": 0.9459459459459459,
+      "precision": 0.8666666666666667,
+      "roc_auc": 0.9014639639639639,
+      "accuracy_lower": 0.7060455734439186,
+      "accuracy_upper": 0.8502098979722215,
+      "recall_lower": 0.4029107454564981,
+      "recall_upper": 0.6742475770713253,
+      "specificity_lower": 0.8690962359544764,
+      "specificity_upper": 0.9787809878271253,
+      "caution": "Descriptive; no fairness or equivalence claim"
+    },
+    {
+      "attribute": "Age",
+      "group": "60 and older",
+      "n": 11,
+      "positive_n": 6,
+      "negative_n": 5,
+      "accuracy": 0.6363636363636364,
+      "recall": 0.6666666666666666,
+      "specificity": 0.6,
+      "precision": 0.6666666666666666,
+      "roc_auc": 0.8666666666666667,
+      "accuracy_lower": 0.35380117450784904,
+      "accuracy_upper": 0.8483352890463243,
+      "recall_lower": 0.2999933151383921,
+      "recall_upper": 0.9032285888942196,
+      "specificity_lower": 0.23072428127601297,
+      "specificity_upper": 0.8823792257673521,
+      "caution": "Small or single-class subgroup; descriptive only"
+    }
+  ],
+  "reliability": [
+    {
+      "bin": 1,
+      "lower_edge": 0.0,
+      "upper_edge": 0.2,
+      "n": 136,
+      "mean_probability": 0.10849872402113159,
+      "positive_fraction": 0.09558823529411764,
+      "lower": 0.05671510952978475,
+      "upper": 0.1566798240782598
+    },
+    {
+      "bin": 2,
+      "lower_edge": 0.2,
+      "upper_edge": 0.4,
+      "n": 75,
+      "mean_probability": 0.2737908669247782,
+      "positive_fraction": 0.30666666666666664,
+      "lower": 0.21386867086778083,
+      "upper": 0.4183045482255707
+    },
+    {
+      "bin": 3,
+      "lower_edge": 0.4,
+      "upper_edge": 0.6000000000000001,
+      "n": 53,
+      "mean_probability": 0.5112817232470436,
+      "positive_fraction": 0.7924528301886793,
+      "lower": 0.6654225529835209,
+      "upper": 0.8799540197358604
+    },
+    {
+      "bin": 4,
+      "lower_edge": 0.6000000000000001,
+      "upper_edge": 0.8,
+      "n": 26,
+      "mean_probability": 0.6492220914620096,
+      "positive_fraction": 0.9615384615384616,
+      "lower": 0.8110722109696525,
+      "upper": 0.9931780150064565
+    },
+    {
+      "bin": 5,
+      "lower_edge": 0.8,
+      "upper_edge": 1.0,
+      "n": 3,
+      "mean_probability": 0.8983138212254883,
+      "positive_fraction": 1.0,
+      "lower": 0.4385029682449546,
+      "upper": 1.0
+    }
+  ],
+  "fitting_on_external_data": false,
+  "caution": "Historical site-transfer check, not prospective clinical validation. Severe feature missingness can make Cleveland-trained imputation unsuitable. Original UCI diagnosis semantics are asserted and validated; input measurement bounds are enforced. No invalid rows are silently corrected or skipped. Feature-overlap audit cannot rule out shared patient identities. Do not tune using this cohort after viewing results."
+}
