@@ -35,7 +35,7 @@ def audit() -> dict:
             failures.append(f"Excluded data/artifact directory: {name}")
         if (
             path.suffix in {".joblib", ".pkl", ".pickle", ".zip"}
-            or path.name.startswith(".env")
+            or (path.name.startswith(".env") and name != ".env.example")
             or name == ".streamlit/secrets.toml"
         ):
             failures.append(f"Private/large artifact type: {name}")
