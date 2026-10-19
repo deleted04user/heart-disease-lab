@@ -1,4 +1,4 @@
-FROM python:3.13.14-slim-trixie AS base
+FROM python:3.14.8-slim-trixie AS base
 COPY --from=ghcr.io/astral-sh/uv:0.13.0 /uv /uvx /usr/local/bin/
 RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 \
     && rm -rf /var/lib/apt/lists/* \
