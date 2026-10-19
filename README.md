@@ -318,7 +318,23 @@ Add `--require-external` to fail verification unless the external cohort was act
 
 ## Continuous integration and portfolio materials
 
-`.github/workflows/ci.yml` runs offline-data unit/Streamlit interaction tests, syntax checks and dependency checks on Windows/Linux with Python 3.10/3.13 after pushes and pull requests. `.github/workflows/real-data.yml` is an explicit manual workflow that downloads both official cohorts, trains the full pipeline, verifies populated UI/report consistency and retains **aggregate reports only** for 14 days. The [public repository's workflows](https://github.com/deleted04user/heart-disease-lab/actions) have been triggered. Their live status is authoritative; queued jobs are not a passing result. Local verification passed with 67 tests on Windows/Python 3.13 and 67 on Linux/Python 3.10, plus separate clean Linux serving verification on Python 3.13.
+`.github/workflows/ci.yml` runs the locked Windows/Linux Python 3.10/3.13 test
+matrix, enforces 85% combined application/package statement-and-branch coverage,
+checks Ruff lint/format and mypy, audits pinned dependencies, builds distributions
+and verifies isolated test/serving containers. Dependabot proposes weekly uv,
+GitHub Actions and Docker updates. The current Windows run passed **88 tests**
+with **86.57%** combined coverage (89.67% statements, 76.14% branches), without
+coverage exclusions. Six third-party Seaborn/Matplotlib deprecation warnings
+remain visible; they are not suppressed or reported as failures.
+
+The manual real-data integration workflow downloads both official cohorts,
+trains the pipeline and verifies reports/UI consistency. It retains aggregate
+reports only. The initial [test matrix](https://github.com/deleted04user/heart-disease-lab/actions/runs/39279288108),
+[real-data integration](https://github.com/deleted04user/heart-disease-lab/actions/runs/39279123927)
+and [portable verification](https://github.com/deleted04user/heart-disease-lab/actions/runs/39279195691)
+completed successfully. Current run results are in [Actions](https://github.com/deleted04user/heart-disease-lab/actions).
+See [engineering verification](reports/engineering_verification.json) and
+[contribution instructions](CONTRIBUTING.md) for the exact checks.
 
 The computed [model card](reports/model_card.md) documents intended use, training, selection, calibration, intervals, separate-site results and limitations. [Architecture](docs/architecture.md), real screenshots and the captioned MP4 support portfolio demonstrations. Raw data, model binaries and user input measurements are excluded from uploaded CI artifacts. Do not mistake automatic checks or a model card for clinical approval.
 

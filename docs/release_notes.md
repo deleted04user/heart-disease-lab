@@ -1,25 +1,21 @@
-# Heart Disease Lab 1.1.0
+# Heart Disease Lab 1.2.0
 
-This educational portfolio release packages the verified Random Forest run
-`27586d03470741438f644f6067b70f22`. The fitted model, probability method and
-threshold are unchanged by the release/deployment work.
+This engineering release preserves the fitted Random Forest run
+`27586d03470741438f644f6067b70f22`, its raw probabilities and fixed threshold.
 
-- Three-repeat stratified training CV and nested raw/sigmoid comparison.
-- Honest historical Cleveland audit and separate Hungarian site-transfer result.
-- Fixed-model uncertainty intervals, probability quality and demographic slices.
-- Portable model/metadata, five anonymous public UCI examples and aggregate reports.
-- Hosted mode disables personal measurement entry and verifies selected examples.
-- Checksum-pinned startup, safe archive handling and no runtime retraining.
-- A training-only missingness stress study and an untouched reserved future cohort.
-- MIT code license; source-data examples retain UCI's CC BY 4.0 attribution.
+- Universal uv lock, explicit dependency metadata and hashed pip exports.
+- Ruff lint/format and mypy gates; 85% combined coverage required by CI.
+- 88 passing Windows tests and 86.57% combined coverage without exclusions.
+- Full isolated training/report/transfer/UI test and bootstrap-integrity tests.
+- Pinned-dependency vulnerability auditing and weekly Dependabot updates.
+- Idempotent JSON operational logging and a documented environment template.
+- Non-root development/serving containers and separate process/model readiness checks.
+- Portable archive verified on Windows and clean Linux with identical example predictions.
 
-Local verification: 67 tests passed on Windows/Python 3.13 and 67 on
-Linux/Python 3.10. The portable archive passed isolated Windows and clean Linux
-checks; a fresh public-source clone also downloaded the published asset and ran
-the cloud entrypoint, all five pages and two public examples successfully.
-GitHub workflow results are reported separately in Actions. Public hosting is
-deferred at the maintainer's request.
+The archive SHA-256 is
+`74b4939fcf49f554a6d7520028f2c185c014874ca50177861e3e4f68a8b59940`.
+Existing 1.1.0 assets remain unchanged. Public hosting remains deferred.
 
-The existing Hungarian recall is 49.1% despite ROC-AUC 0.899. This release does
-not present the model as clinically validated or suitable for medical decisions.
-See the model card and transfer investigation for sample sizes and limitations.
+Six third-party plotting deprecation warnings are recorded. Historical Hungarian
+recall remains 49.1%; no clinical validation or diagnostic suitability is claimed.
+Code is MIT; the public UCI examples retain CC BY 4.0 attribution.

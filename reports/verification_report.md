@@ -1,4 +1,27 @@
-# Local execution verification — research upgrade
+# Execution verification
+
+## Engineering release 1.2.0 — 2026-10-19
+
+- Windows/Python 3.13: **88 passed** in 38.23 seconds. Combined statement/branch
+  coverage: **86.57%**, with no exclusions; CI enforces a minimum 85%.
+- Ruff lint and format checks pass across source, scripts, tests, deployment and
+  app; mypy checks all 18 package files, including unannotated function bodies.
+- The universal uv lock and generated exports pin resolved versions and hashes.
+  `pip-audit` found no known vulnerabilities in the pinned development export.
+- New tests verify training/report/prediction coherence, populated pages, public
+  example controls, immutable model use during transfer analysis, cache
+  integrity, archive rejection, local health retries and publication exclusions.
+- Six visible third-party plotting deprecation warnings remain. They are not
+  suppressed. No synthetic fixture results are used as experiment evidence.
+- Portable 1.2.0 passed isolated Windows and clean Linux verification. The five
+  example probabilities match exactly; the fitted run and model bytes are unchanged.
+  Archive SHA-256: `74b4939fcf49f554a6d7520028f2c185c014874ca50177861e3e4f68a8b59940`.
+- The initial GitHub test matrix, real-data integration and portable verification
+  have completed successfully. Current engineering/container CI evidence is
+  recorded separately in `engineering_verification.json` and the Actions tab.
+- Public Streamlit hosting remains deferred at the maintainer's request.
+
+## Earlier research-release validation
 
 Verified on 2026-10-19 in Windows with Python 3.13.14. Runtime versions are in `requirements-lock.txt`; optional video tooling is declared in `requirements-demo.txt`.
 

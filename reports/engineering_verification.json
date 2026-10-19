@@ -1,0 +1,40 @@
+{
+  "recorded_utc": "2026-10-19T17:00:20.140470+00:00",
+  "local_windows": {
+    "tests": 88,
+    "status": "passed",
+    "python": "3.13.14",
+    "warnings": 6,
+    "warning_scope": "Seaborn/Matplotlib deprecations",
+    "coverage": {
+      "covered_lines": 1458,
+      "num_statements": 1626,
+      "percent_covered": 86.57495256166983,
+      "percent_covered_display": "87",
+      "missing_lines": 168,
+      "excluded_lines": 0,
+      "percent_statements_covered": 89.66789667896678,
+      "percent_statements_covered_display": "90",
+      "num_branches": 482,
+      "num_partial_branches": 81,
+      "covered_branches": 367,
+      "missing_branches": 115,
+      "percent_branches_covered": 76.14107883817428,
+      "percent_branches_covered_display": "76"
+    }
+  },
+  "ruff_lint": "passed",
+  "ruff_format": "passed",
+  "mypy_package_files": 18,
+  "mypy": "passed",
+  "dependency_audit": "no known vulnerabilities found in pinned development export",
+  "portable_windows": "reports/portable_windows_verification.json",
+  "portable_linux": "reports/portable_linux_verification.json",
+  "model_unchanged": {
+    "run_id": "27586d03470741438f644f6067b70f22",
+    "model_sha256": "e4b0ba8ab0a23ab81ff1fd53dd03ff326766089a2556bfe3a49fb8e1c5e889c7"
+  },
+  "remote_engineering_ci": "pending initial push",
+  "container_verification": "pending GitHub Linux runner",
+  "hosting": "deferred by user request"
+}
