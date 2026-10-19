@@ -2,7 +2,7 @@
 
 A complete local machine learning project using **real UCI Heart Disease records**: validated acquisition, exploratory analysis, leakage-safe model comparison, reusable inference and a five-page Streamlit dashboard.
 
-Release 1.1 adds a [portable deployment bundle](docs/deployment.md), [MIT code license](LICENSE), a separate public-example-only cloud entrypoint, and [transfer-gap diagnostics](reports/transfer_diagnostics.md). The full raw datasets, local run snapshots and model binaries remain outside Git history. The fitted model has not been changed to chase external results.
+Release 1.1 adds a [published portable bundle](https://github.com/deleted04user/heart-disease-lab/releases/tag/v1.1.0), [MIT code license](LICENSE), a separate public-example-only cloud entrypoint, and [transfer-gap diagnostics](reports/transfer_diagnostics.md). The full raw datasets, local run snapshots and model binaries remain outside Git history. The fitted model has not been changed to chase external results.
 
 **Educational use only. Not clinically validated. Do not use the model, probability output or dashboard to diagnose, treat or make medical decisions.**
 
@@ -283,7 +283,7 @@ Add `--require-external` to fail verification unless the external cohort was act
 
 ## Continuous integration and portfolio materials
 
-`.github/workflows/ci.yml` runs offline-data unit/Streamlit interaction tests, syntax checks and dependency checks on Windows/Linux with Python 3.10/3.13 after pushes and pull requests. `.github/workflows/real-data.yml` is an explicit manual workflow that downloads both official cohorts, trains the full pipeline, verifies populated UI/report consistency and retains **aggregate reports only** for 14 days. These workflows are provided for a future GitHub repository; they were not remotely executed or published from this local workspace. Local equivalents were executed.
+`.github/workflows/ci.yml` runs offline-data unit/Streamlit interaction tests, syntax checks and dependency checks on Windows/Linux with Python 3.10/3.13 after pushes and pull requests. `.github/workflows/real-data.yml` is an explicit manual workflow that downloads both official cohorts, trains the full pipeline, verifies populated UI/report consistency and retains **aggregate reports only** for 14 days. The [public repository's workflows](https://github.com/deleted04user/heart-disease-lab/actions) have been triggered. Their live status is authoritative; queued jobs are not a passing result. Local verification passed with 67 tests on Windows/Python 3.13 and 67 on Linux/Python 3.10, plus separate clean Linux serving verification on Python 3.13.
 
 The computed [model card](reports/model_card.md) documents intended use, training, selection, calibration, intervals, separate-site results and limitations. [Architecture](docs/architecture.md), real screenshots and the captioned MP4 support portfolio demonstrations. Raw data, model binaries and user input measurements are excluded from uploaded CI artifacts. Do not mistake automatic checks or a model card for clinical approval.
 
@@ -301,6 +301,8 @@ The cloud entrypoint is `deploy/streamlit_app.py`. It downloads only the committ
 Keep the local `main` branch's localhost binding. The dedicated `streamlit-demo` branch changes only the server binding for the hosted service. Deployment instructions, versioning, account prerequisites and verification commands are in [docs/deployment.md](docs/deployment.md). A live deployment is not claimed merely because release files exist.
 
 `.github/workflows/portable-release.yml` performs a separate clean Linux verification using serving dependencies only and the published archive. It exercises every page and bundled examples without the raw data. Local verification JSONs record their actual OS, Python, archive hash and checked behaviors.
+
+The actual cloud entrypoint also passed locally from a fresh Linux clone of the public `streamlit-demo` branch: it downloaded the published pinned asset, opened all five pages, disabled personal inputs and predicted two bundled examples. Public hosting is deferred at the maintainer's request. It will require Streamlit account sign-in and Terms acceptance; no working public app URL has been issued yet.
 
 ## Investigating the external recall gap
 

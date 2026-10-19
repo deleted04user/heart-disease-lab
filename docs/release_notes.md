@@ -13,6 +13,13 @@ threshold are unchanged by the release/deployment work.
 - A training-only missingness stress study and an untouched reserved future cohort.
 - MIT code license; source-data examples retain UCI's CC BY 4.0 attribution.
 
+Local verification: 67 tests passed on Windows/Python 3.13 and 67 on
+Linux/Python 3.10. The portable archive passed isolated Windows and clean Linux
+checks; a fresh public-source clone also downloaded the published asset and ran
+the cloud entrypoint, all five pages and two public examples successfully.
+GitHub workflow results are reported separately in Actions. Public hosting is
+deferred at the maintainer's request.
+
 The existing Hungarian recall is 49.1% despite ROC-AUC 0.899. This release does
 not present the model as clinically validated or suitable for medical decisions.
 See the model card and transfer investigation for sample sizes and limitations.

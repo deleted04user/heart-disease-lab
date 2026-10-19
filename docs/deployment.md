@@ -33,6 +33,9 @@ use. `python scripts/prepare_cloud_branch.py` derives a separate `streamlit-demo
 branch with the server address set to `0.0.0.0` for the cloud service. This does
 not change the current checkout or expose the desktop's local server. Deploy
 only `deploy/streamlit_app.py`, which enables public-example-only mode.
+Use `python scripts/prepare_cloud_branch.py --update` to refresh an existing
+derived branch after a main-branch change. The script preserves branch history
+and verifies that only the intended configuration differs from main.
 
 ## Publish in order
 

@@ -1,0 +1,96 @@
+{
+  "recorded_utc": "2026-10-19T15:47:30.2754655Z",
+  "repository": "https://github.com/deleted04user/heart-disease-lab",
+  "tested_source_commit": "6d5457de77bb91b990015051a6c972ae9b4d38b6",
+  "verified_cloud_branch_commit": "7473db79f68004b7fa91baa7ecebbf7f95efff1f",
+  "local_unit_suite": {
+    "os": "Windows",
+    "status": "passed",
+    "python": "3.13.14",
+    "tests": 67
+  },
+  "portable_windows": "reports/portable_windows_verification.json",
+  "portable_linux": "reports/portable_linux_verification.json",
+  "fresh_linux_cloud_bootstrap": {
+    "status": "passed",
+    "source": "public GitHub clone",
+    "checks": [
+      "all five pages",
+      "disabled personal inputs",
+      "two public example predictions",
+      "no source dataset or local model needed"
+    ],
+    "bundle": "downloaded published pinned release"
+  },
+  "release": {
+    "assets": [
+      {
+        "apiUrl": "https://api.github.com/repos/deleted04user/heart-disease-lab/releases/assets/656675442",
+        "contentType": "application/zip",
+        "createdAt": "2026-10-19T15:35:28Z",
+        "digest": "sha256:f4702bf1fac3f690cbf5e62fcc7d1b078d892bef2435429a57960acbf54b4fd7",
+        "downloadCount": 0,
+        "id": "RA_kwDOVPxhTs4nJBJy",
+        "label": "",
+        "name": "heart-disease-lab-1.1.0.zip",
+        "size": 1137005,
+        "state": "uploaded",
+        "updatedAt": "2026-10-19T15:35:30Z",
+        "url": "https://github.com/deleted04user/heart-disease-lab/releases/download/v1.1.0/heart-disease-lab-1.1.0.zip"
+      }
+    ],
+    "tagName": "v1.1.0",
+    "url": "https://github.com/deleted04user/heart-disease-lab/releases/tag/v1.1.0"
+  },
+  "remote_workflows": [
+    {
+      "conclusion": "",
+      "databaseId": 39279288108,
+      "headSha": "6d5457de77bb91b990015051a6c972ae9b4d38b6",
+      "name": "Tests and application checks",
+      "status": "queued",
+      "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39279288108"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39279195691,
+      "headSha": "c65ebc2bfa4e999f17fca167b5645ba91a621bcb",
+      "name": "Portable release verification",
+      "status": "queued",
+      "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39279195691"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39279123927,
+      "headSha": "c65ebc2bfa4e999f17fca167b5645ba91a621bcb",
+      "name": "Manual real-data integration",
+      "status": "queued",
+      "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39279123927"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39279121214,
+      "headSha": "c65ebc2bfa4e999f17fca167b5645ba91a621bcb",
+      "name": "Tests and application checks",
+      "status": "queued",
+      "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39279121214"
+    }
+  ],
+  "hosting": {
+    "provider": "Streamlit Community Cloud",
+    "status": "deferred_by_user_request",
+    "live_url": null,
+    "entrypoint": "deploy/streamlit_app.py",
+    "python": "3.13",
+    "branch": "streamlit-demo"
+  },
+  "linux_python310_suite": {
+    "status": "passed",
+    "os": "Linux",
+    "tests": 67,
+    "source": "fresh public GitHub clone",
+    "dependencies": "requirements.txt",
+    "seconds": 7.12,
+    "python": "3.10.20"
+  }
+}
