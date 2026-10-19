@@ -10,6 +10,6 @@ font = "sans serif"
 gatherUsageStats = false
 
 [server]
-address = "127.0.0.1"
+address = "0.0.0.0"
 headless = true
 enableStaticServing = false
