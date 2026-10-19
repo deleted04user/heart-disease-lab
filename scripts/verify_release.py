@@ -1,4 +1,5 @@
 """Extract a pinned bundle, then verify it from outside the original source tree."""
+
 import argparse
 import json
 import subprocess
@@ -9,7 +10,7 @@ from pathlib import Path
 from _common import ROOT
 from heart_disease.bundle import checksum, extract_bundle
 
-CHILD = r'''
+CHILD = r"""
 import json, os, sys
 from pathlib import Path
 root = Path(sys.argv[1]).resolve()
@@ -45,7 +46,7 @@ assert not app.exception and not app.error
 assert app.session_state["prediction_export"]["public_example_loaded"] is True
 import platform
 print(json.dumps({"status":"passed", "os":platform.system(), "python":platform.python_version(), "run_id":metadata["run_id"], "examples":len(records), "probabilities":predictions.positive_class_probability.tolist(), "checks":["portable package origin", "no raw dataset required", "artifact checksum and versions", "all dashboard pages", "public-only input controls", "two public examples predicted", "form/API consistency"]}))
-'''
+"""
 
 
 def verify(bundle: Path, output: Path | None = None):
@@ -53,7 +54,13 @@ def verify(bundle: Path, output: Path | None = None):
     with tempfile.TemporaryDirectory(prefix="heart-portable-") as directory:
         extracted = Path(directory) / "app"
         extract_bundle(payload, extracted, checksum(payload))
-        result = subprocess.run([sys.executable, "-I", "-c", CHILD, str(extracted)], cwd=directory, text=True, encoding="utf-8", capture_output=True)
+        result = subprocess.run(
+            [sys.executable, "-I", "-c", CHILD, str(extracted)],
+            cwd=directory,
+            text=True,
+            encoding="utf-8",
+            capture_output=True,
+        )
         if result.returncode:
             raise RuntimeError(result.stdout + result.stderr)
         lines = result.stdout.strip().splitlines()
@@ -67,7 +74,8 @@ def verify(bundle: Path, output: Path | None = None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--bundle", type=Path, default=ROOT / "dist/heart-disease-lab-1.1.0.zip")
+    config = json.loads((ROOT / "deploy/release.json").read_text(encoding="utf-8"))
+    parser.add_argument("--bundle", type=Path, default=ROOT / "dist" / config["asset"])
     parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()
     print(json.dumps(verify(args.bundle, args.output), indent=2))

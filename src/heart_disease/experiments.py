@@ -1,4 +1,5 @@
 """Preserve immutable run folders and publish only a fully completed experiment."""
+
 import shutil
 import uuid
 from datetime import datetime, timezone
@@ -33,12 +34,18 @@ def preserve_existing(model_path: Path, report_dir: Path, runs_dir: Path = RUNS_
         recorded = Path(recorded_run).resolve()
         if recorded.is_relative_to(Path(runs_dir).resolve()) and (recorded / "run.json").is_file():
             manifest = read_json(recorded / "run.json")
-            if manifest.get("status") == "complete" and manifest.get("run_id") == run_id and manifest.get("model_sha256") == sha256(model_path):
+            if (
+                manifest.get("status") == "complete"
+                and manifest.get("run_id") == run_id
+                and manifest.get("model_sha256") == sha256(model_path)
+            ):
                 return recorded
     destination = Path(runs_dir).resolve() / ("preserved-" + run_id)
     if destination.exists():
         if sha256(destination / "models/heart_model.joblib") != sha256(model_path):
-            raise ValueError("Preserved run exists with different model bytes; refusing to overwrite it.")
+            raise ValueError(
+                "Preserved run exists with different model bytes; refusing to overwrite it."
+            )
         return destination
     destination.mkdir(parents=True, exist_ok=False)
     (destination / "models").mkdir()
@@ -46,7 +53,15 @@ def preserve_existing(model_path: Path, report_dir: Path, runs_dir: Path = RUNS_
     shutil.copy2(metadata_path(model_path), destination / "models/heart_model.metadata.json")
     if report_dir.exists():
         shutil.copytree(report_dir, destination / "reports")
-    write_json(destination / "run.json", {"run_id": run_id, "status": "preserved", "source_model_sha256": sha256(model_path), "note": "Snapshot copied before publishing a newer experiment. Original report content retained."})
+    write_json(
+        destination / "run.json",
+        {
+            "run_id": run_id,
+            "status": "preserved",
+            "source_model_sha256": sha256(model_path),
+            "note": "Snapshot copied before publishing a newer experiment. Original report content retained.",
+        },
+    )
     return destination
 
 
@@ -55,8 +70,25 @@ def complete_run(run_dir: Path, report: dict):
     metadata = read_json(metadata_path(model))
     if metadata["run_id"] != report["run_id"] or metadata["model_sha256"] != sha256(model):
         raise ValueError("Model, metadata and report must describe the same completed run.")
-    hashes = {str(path.relative_to(run_dir / "reports").as_posix()): sha256(path) for path in (run_dir / "reports").rglob("*") if path.is_file()}
-    write_json(run_dir / "run.json", {"run_id": report["run_id"], "status": "complete", "created_utc": report["created_utc"], "selected_model": report["selected_model"], "probability_method": report.get("calibration", {}).get("selected_method", "raw"), "data_sha256": report["data"]["sha256"], "model_sha256": sha256(model), "report": "reports/evaluation_report.json", "reports_sha256": hashes})
+    hashes = {
+        str(path.relative_to(run_dir / "reports").as_posix()): sha256(path)
+        for path in (run_dir / "reports").rglob("*")
+        if path.is_file()
+    }
+    write_json(
+        run_dir / "run.json",
+        {
+            "run_id": report["run_id"],
+            "status": "complete",
+            "created_utc": report["created_utc"],
+            "selected_model": report["selected_model"],
+            "probability_method": report.get("calibration", {}).get("selected_method", "raw"),
+            "data_sha256": report["data"]["sha256"],
+            "model_sha256": sha256(model),
+            "report": "reports/evaluation_report.json",
+            "reports_sha256": hashes,
+        },
+    )
 
 
 def _copy_atomic(source: Path, destination: Path):
@@ -94,6 +126,10 @@ def publish_run(run_dir: Path, model_path: Path, report_dir: Path):
             _copy_atomic(source, Path(report_dir) / source.relative_to(run_dir / "reports"))
     _copy_atomic(source_model, Path(model_path))
     metadata = read_json(run_dir / "models/heart_model.metadata.json")
-    metadata.update({"report_dir": str(Path(report_dir).resolve()), "immutable_run_dir": str(run_dir.resolve())})
+    metadata.update(
+        {"report_dir": str(Path(report_dir).resolve()), "immutable_run_dir": str(run_dir.resolve())}
+    )
     write_json(metadata_path(model_path), metadata)
-    write_json(Path(report_dir) / "active_run.json", {**manifest, "run_dir": str(run_dir.resolve())})
+    write_json(
+        Path(report_dir) / "active_run.json", {**manifest, "run_dir": str(run_dir.resolve())}
+    )

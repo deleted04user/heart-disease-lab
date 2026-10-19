@@ -1,4 +1,5 @@
 """Artificial records below are isolated unit fixtures, never experimental evidence."""
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -6,8 +7,16 @@ from sklearn.model_selection import RepeatedStratifiedKFold
 
 from heart_disease.config import FEATURES
 from heart_disease.modeling import build_models
-from heart_disease.research import compare_calibration, make_probability_pipeline, probability_scores, reliability_bins, subgroup_results, uncertainty, wilson_interval
 from heart_disease.prediction import load_artifact, save_artifact
+from heart_disease.research import (
+    compare_calibration,
+    make_probability_pipeline,
+    probability_scores,
+    reliability_bins,
+    subgroup_results,
+    uncertainty,
+    wilson_interval,
+)
 
 
 def test_wilson_known_counts_and_undefined():
@@ -54,7 +63,10 @@ def test_calibration_is_nested_and_rule_controls_retention(dataset):
     cv = RepeatedStratifiedKFold(n_splits=2, n_repeats=2, random_state=42)
     report, fitted = compare_calibration(model, X, y, list(cv.split(X, y)), folds=2, repeats=2)
     summary = {row["method"]: row for row in report["summary"]}
-    retain = summary["raw"]["brier_mean"] - summary["sigmoid"]["brier_mean"] >= 0.002 and summary["sigmoid"]["log_loss_mean"] < summary["raw"]["log_loss_mean"]
+    retain = (
+        summary["raw"]["brier_mean"] - summary["sigmoid"]["brier_mean"] >= 0.002
+        and summary["sigmoid"]["log_loss_mean"] < summary["raw"]["log_loss_mean"]
+    )
     assert report["selected_method"] == ("sigmoid" if retain else "raw")
     assert len(report["fold_scores"]) == 8
     assert all(sum(row["n"] for row in curve) == len(X) for curve in report["reliability"].values())
@@ -74,8 +86,18 @@ def test_subgroup_undefined_denominators_and_empty_groups():
 
 def test_calibrated_complete_pipeline_survives_persistence(dataset, tmp_path):
     X, y = dataset.frame[FEATURES], dataset.frame.target
-    pipeline = make_probability_pipeline(build_models()[0]["Logistic Regression"], "sigmoid").fit(X, y)
+    pipeline = make_probability_pipeline(build_models()[0]["Logistic Regression"], "sigmoid").fit(
+        X, y
+    )
     path = tmp_path / "unit_calibrated.joblib"
-    save_artifact(pipeline, {"run_id": "test-only", "selected_model": "Logistic Regression", "probability_method": "sigmoid"}, path)
+    save_artifact(
+        pipeline,
+        {
+            "run_id": "test-only",
+            "selected_model": "Logistic Regression",
+            "probability_method": "sigmoid",
+        },
+        path,
+    )
     restored, _ = load_artifact(path)
     np.testing.assert_allclose(pipeline.predict_proba(X), restored.predict_proba(X))

@@ -1,7 +1,9 @@
 """Descriptive EDA from actual loaded records; no fitting or predictive claims."""
+
 from pathlib import Path
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -34,13 +36,13 @@ def run_eda(dataset: Dataset, output_dir: Path = REPORT_DIR) -> dict:
 
     missing = frame[FEATURES].isna().sum()
     fig, ax = plt.subplots(figsize=(7, 3.5))
-    ax.bar(missing.index, missing.values, color="#2463EB")
+    ax.bar(missing.index, missing.to_numpy(dtype=int), color="#2463EB")
     ax.tick_params(axis="x", rotation=45)
     ax.set(ylabel="Missing cells", title="Missing values before fold-local imputation")
     save(fig, "missing_values.png")
 
     fig, axes = plt.subplots(2, 3, figsize=(12, 7))
-    for col, ax in zip(NUMERIC, axes.flat):
+    for col, ax in zip(NUMERIC, axes.flat, strict=False):
         sns.histplot(data=frame, x=col, bins=18, ax=ax, color="#2463EB")
         ax.set_title(col)
     axes.flat[-1].set_visible(False)
@@ -48,7 +50,7 @@ def run_eda(dataset: Dataset, output_dir: Path = REPORT_DIR) -> dict:
     save(fig, "numeric_distributions.png")
 
     fig, axes = plt.subplots(2, 3, figsize=(12, 7))
-    for col, ax in zip(NUMERIC, axes.flat):
+    for col, ax in zip(NUMERIC, axes.flat, strict=False):
         sns.boxplot(data=frame, x=TARGET, y=col, ax=ax, color="#92B4F4")
         ax.set(xlabel="Dataset target", title=col)
     axes.flat[-1].set_visible(False)
@@ -62,7 +64,7 @@ def run_eda(dataset: Dataset, output_dir: Path = REPORT_DIR) -> dict:
     save(fig, "correlations.png")
 
     fig, axes = plt.subplots(2, 4, figsize=(14, 7.5))
-    for col, ax in zip(CATEGORICAL, axes.flat):
+    for col, ax in zip(CATEGORICAL, axes.flat, strict=True):
         sns.countplot(data=frame, x=col, hue=TARGET, ax=ax)
         ax.set_title(col)
         ax.set_xlabel("Original UCI code")
@@ -73,24 +75,36 @@ def run_eda(dataset: Dataset, output_dir: Path = REPORT_DIR) -> dict:
     stats = frame[FEATURES].describe().T
     stats.to_csv(output_dir / "descriptive_statistics.csv")
     association = correlation[TARGET].drop(TARGET).sort_values(key=abs, ascending=False)
-    summary = {"data": meta, "dtypes": {col: str(dtype) for col, dtype in frame.dtypes.items()}, "positive_fraction": float(frame[TARGET].mean()), "class_ratio_majority_to_minority": float(counts.max() / counts.min()), "numeric_target_correlations": {key: (float(value) if pd.notna(value) else None) for key, value in association.items()}, "categorical_labels": CATEGORY_LABELS}
+    summary = {
+        "data": meta,
+        "dtypes": {col: str(dtype) for col, dtype in frame.dtypes.items()},
+        "positive_fraction": float(frame[TARGET].mean()),
+        "class_ratio_majority_to_minority": float(counts.max() / counts.min()),
+        "numeric_target_correlations": {
+            key: (float(value) if pd.notna(value) else None) for key, value in association.items()
+        },
+        "categorical_labels": CATEGORY_LABELS,
+    }
     write_json(output_dir / "eda_summary.json", summary)
     write_json(output_dir / "data_provenance.json", meta)
     missing_text = ", ".join(f"{col}: {int(n)}" for col, n in missing.items() if n) or "None"
-    ranges = "\n".join(f"| {col} | {frame[col].min():.1f} | {frame[col].median():.1f} | {frame[col].max():.1f} |" for col in NUMERIC)
+    ranges = "\n".join(
+        f"| {col} | {frame[col].min():.1f} | {frame[col].median():.1f} | {frame[col].max():.1f} |"
+        for col in NUMERIC
+    )
     report = f"""# Exploratory data analysis
 
-Generated directly from `{meta['path']}`, SHA-256 `{meta['sha256']}`.
-Variant: {meta['variant']}. Source: {meta['source']['source']} ({meta['reference_url']}).
+Generated directly from `{meta["path"]}`, SHA-256 `{meta["sha256"]}`.
+Variant: {meta["variant"]}. Source: {meta["source"]["source"]} ({meta["reference_url"]}).
 
 ## Overview and quality
 
-Raw shape: {meta['raw_rows']} × {meta['raw_columns']}. Normalized shape: {frame.shape[0]} × {frame.shape[1]} ({len(FEATURES)} predictors and one binary target).
-Feature names: {', '.join(FEATURES)}. Numeric storage is float64 to permit missing values; target is int64. Eight coded features are treated categorically in modeling.
+Raw shape: {meta["raw_rows"]} × {meta["raw_columns"]}. Normalized shape: {frame.shape[0]} × {frame.shape[1]} ({len(FEATURES)} predictors and one binary target).
+Feature names: {", ".join(FEATURES)}. Numeric storage is float64 to permit missing values; target is int64. Eight coded features are treated categorically in modeling.
 Missing cells by feature: {missing_text}. Missing targets are rejected, never imputed.
-Exact duplicates removed: {meta['duplicates_removed']}. No values were silently corrected. {'; '.join(meta['notes'])}
-Original target transformation: {meta['target_mapping']}.
-Class 0: {int(counts[0])}; class 1: {int(counts[1])}. Positive fraction: {frame[TARGET].mean():.2%}; majority/minority ratio: {counts.max()/counts.min():.3f}.
+Exact duplicates removed: {meta["duplicates_removed"]}. No values were silently corrected. {"; ".join(meta["notes"])}
+Original target transformation: {meta["target_mapping"]}.
+Class 0: {int(counts[0])}; class 1: {int(counts[1])}. Positive fraction: {frame[TARGET].mean():.2%}; majority/minority ratio: {counts.max() / counts.min():.3f}.
 
 ## Numerical observations
 
@@ -98,7 +112,7 @@ Class 0: {int(counts[0])}; class 1: {int(counts[1])}. Positive fraction: {frame[
 |---|---:|---:|---:|
 {ranges}
 
-Pearson correlations with target: {', '.join(f'{col} = {value:.3f}' if pd.notna(value) else f'{col} = undefined (constant values)' for col, value in association.items())}.
+Pearson correlations with target: {", ".join(f"{col} = {value:.3f}" if pd.notna(value) else f"{col} = undefined (constant values)" for col, value in association.items())}.
 These describe this sample and do not establish causality. Outliers are retained when they satisfy the documented entry schema; imputation is deferred to training folds.
 
 ## Figures and detailed inspection

@@ -1,6 +1,7 @@
+import sys
+
 import numpy as np
 import pytest
-import sys
 
 from heart_disease.config import FEATURES
 from heart_disease.data import Dataset, DataValidationError

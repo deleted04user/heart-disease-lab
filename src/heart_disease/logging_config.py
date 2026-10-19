@@ -5,7 +5,9 @@ import logging
 import os
 from datetime import datetime, timezone
 
-_LEVELS = {name: getattr(logging, name) for name in ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")}
+_LEVELS = {
+    name: getattr(logging, name) for name in ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")
+}
 
 
 class JsonFormatter(logging.Formatter):

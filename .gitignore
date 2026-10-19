@@ -26,6 +26,8 @@ models/*
 build/
 dist/
 .coverage
+coverage.xml
+coverage.json
 htmlcov/
 experiments/runs/*/models/
 .deployment-cache/

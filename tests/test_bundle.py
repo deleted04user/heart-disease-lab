@@ -1,4 +1,5 @@
 """Isolated fixture archives only; never publish the artifacts built by these tests."""
+
 import io
 import json
 from pathlib import Path
@@ -6,14 +7,23 @@ from zipfile import ZipFile
 
 import pytest
 
-from heart_disease.bundle import build_bundle, checksum, extract_bundle, safe_member, sanitize, verify_directory
+from heart_disease.bundle import (
+    build_bundle,
+    checksum,
+    extract_bundle,
+    safe_member,
+    sanitize,
+    verify_directory,
+)
 from heart_disease.config import FEATURES, ROOT, UCI_URL
 from heart_disease.demo import public_demo_record
 from heart_disease.modeling import build_models, dependency_versions
 from heart_disease.prediction import load_artifact, save_artifact
 
 
-@pytest.mark.parametrize("name", ["../outside", "/absolute", "C:/drive", "models/../../outside", "models\\bad"])
+@pytest.mark.parametrize(
+    "name", ["../outside", "/absolute", "C:/drive", "models/../../outside", "models\\bad"]
+)
 def test_archive_paths_cannot_escape(name):
     with pytest.raises(ValueError):
         safe_member(name)
@@ -32,10 +42,24 @@ def test_archive_sha_and_zip_slip_are_rejected(tmp_path):
 
 
 def test_bundle_deterministic_portable_and_tamper_checked(dataset, tmp_path):
-    pipeline = build_models()[0]["Logistic Regression"].fit(dataset.frame[FEATURES], dataset.frame.target)
-    source = {**dataset.metadata, "source": {"url": UCI_URL, "source": "Isolated official-source fixture mock"}}
+    pipeline = build_models()[0]["Logistic Regression"].fit(
+        dataset.frame[FEATURES], dataset.frame.target
+    )
+    source = {
+        **dataset.metadata,
+        "source": {"url": UCI_URL, "source": "Isolated official-source fixture mock"},
+    }
     model = tmp_path / "test_only/model.joblib"
-    save_artifact(pipeline, {"run_id": "unit-only", "selected_model": "Logistic Regression", "data": source, "dependency_versions": dependency_versions()}, model)
+    save_artifact(
+        pipeline,
+        {
+            "run_id": "unit-only",
+            "selected_model": "Logistic Regression",
+            "data": source,
+            "dependency_versions": dependency_versions(),
+        },
+        model,
+    )
     reports = tmp_path / "reports"
     reports.mkdir()
     (reports / "example.json").write_text(json.dumps({"path": "C:\\Users\\private\\source.csv"}))
@@ -57,6 +81,8 @@ def test_bundle_deterministic_portable_and_tamper_checked(dataset, tmp_path):
 
 
 def test_sanitizer_removes_runtime_paths():
-    result = sanitize({"_artifact_dir": "ignored", "path": "C:\\Users\\private\\source.csv"}, Path("/example"))
+    result = sanitize(
+        {"_artifact_dir": "ignored", "path": "C:\\Users\\private\\source.csv"}, Path("/example")
+    )
     assert "_artifact_dir" not in result
     assert result["path"] == "[training workspace]/source.csv"

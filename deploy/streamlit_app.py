@@ -1,9 +1,10 @@
 """Cloud entrypoint: fetch one pinned trusted release, never retrain at startup."""
+
 import os
 import runpy
 import sys
-from pathlib import Path
 from importlib.util import module_from_spec, spec_from_file_location
+from pathlib import Path
 
 import streamlit as st
 
@@ -15,11 +16,15 @@ bootstrap = module_from_spec(spec)
 spec.loader.exec_module(bootstrap)
 
 try:
-    bundle = bootstrap.ensure_cloud_bundle(Path(__file__).with_name("release.json"), PROJECT / ".deployment-cache")
+    bundle = bootstrap.ensure_cloud_bundle(
+        Path(__file__).with_name("release.json"), PROJECT / ".deployment-cache"
+    )
 except Exception as exc:
     st.set_page_config(page_title="Heart Disease Lab · deployment status", layout="centered")
     st.error(f"The pinned educational release could not be verified or loaded: {exc}")
-    st.info("The maintainer must publish the release asset matching deploy/release.json. No fake model or automatic retraining is used.")
+    st.info(
+        "The maintainer must publish the release asset matching deploy/release.json. No fake model or automatic retraining is used."
+    )
     st.stop()
 
 os.environ["HEART_MODEL_PATH"] = str(bundle / "models/heart_model.joblib")

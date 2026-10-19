@@ -2,7 +2,12 @@
 
 A complete local machine learning project using **real UCI Heart Disease records**: validated acquisition, exploratory analysis, leakage-safe model comparison, reusable inference and a five-page Streamlit dashboard.
 
-Release 1.1 adds a [published portable bundle](https://github.com/deleted04user/heart-disease-lab/releases/tag/v1.1.0), [MIT code license](LICENSE), a separate public-example-only cloud entrypoint, and [transfer-gap diagnostics](reports/transfer_diagnostics.md). The full raw datasets, local run snapshots and model binaries remain outside Git history. The fitted model has not been changed to chase external results.
+Release 1.2 adds a standard `uv.lock`, enforced lint/format/type/coverage checks,
+dependency auditing and updates, JSON logging, and isolated development/serving
+containers. It retains the [portable release](docs/deployment.md), MIT code
+license, public-example-only cloud entrypoint and transfer-gap diagnostics.
+Raw datasets, local run snapshots and model binaries remain outside Git history.
+The fitted model and its probability method have not been changed.
 
 **Educational use only. Not clinically validated. Do not use the model, probability output or dashboard to diagnose, treat or make medical decisions.**
 
@@ -22,7 +27,33 @@ The task is supervised binary classification of the **recorded angiographic dise
 - Wilson/bootstrap intervals, recorded-sex/age subgroup slices and an audited separate-site Hungarian evaluation.
 - Public-example/reset controls, minimal result downloads, versioned experiments, a model card and GitHub Actions checks.
 
-## Quick start — Windows PowerShell
+## Reproducible development — Windows, macOS and Linux
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/), clone this
+repository, and run these commands from its root:
+
+```sh
+uv sync --locked --extra dev --python 3.13
+uv run --locked pytest --cov
+uv run --locked ruff check src scripts app.py tests deploy
+uv run --locked ruff format --check src scripts app.py tests deploy
+uv run --locked mypy src
+uv run --locked streamlit run deploy/streamlit_app.py
+```
+
+The last command runs the pinned public-example demo without downloading the
+full datasets or training a model. For local training, use the acquisition and
+training commands below. The universal lockfile includes Python/platform markers
+and package hashes; CI checks Python 3.10 and 3.13 on Windows and Linux.
+`pyproject.toml` is the dependency source of truth. Requirements files are generated
+exports. See [CONTRIBUTING.md](CONTRIBUTING.md) for lock updates and all checks.
+
+For an isolated test suite or demo, follow [the container guide](docs/containers.md).
+`docker compose up --build` serves public examples on localhost port 8502.
+The native Streamlit `/_stcore/health` endpoint is checked separately from model
+and dashboard readiness.
+
+## Pip quick start — Windows PowerShell
 
 From the project directory, Python **3.10+** is required. This workspace was verified with Python 3.13 on Windows; use a recent Python release with binary wheels for all dependencies.
 
@@ -30,7 +61,7 @@ From the project directory, Python **3.10+** is required. This workspace was ver
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-lock.txt
 python -m pip install -e . --no-deps
 python scripts/download_data.py
 python scripts/download_external.py
@@ -44,7 +75,7 @@ python -m streamlit run app.py
 If execution policy prevents activation, use the virtual environment's interpreter directly; changing machine-wide policy is unnecessary:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m pip install --require-hashes -r requirements-lock.txt
 .\.venv\Scripts\python.exe -m pip install -e . --no-deps
 .\.venv\Scripts\python.exe scripts/download_data.py
 .\.venv\Scripts\python.exe scripts/download_external.py
@@ -59,7 +90,7 @@ If execution policy prevents activation, use the virtual environment's interpret
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+python -m pip install --require-hashes -r requirements-lock.txt
 python -m pip install -e . --no-deps
 python scripts/download_data.py
 python scripts/download_external.py
@@ -72,7 +103,11 @@ python -m streamlit run app.py
 
 Open [the local dashboard](http://localhost:8501). The provided configuration binds to localhost, disables Streamlit usage telemetry and uses a light navy/blue theme. No credentials, Kaggle account or paid services are required.
 
-`scripts/train.py` also generates EDA, so a separate EDA run is optional. For the exact tested package versions, install `requirements-lock.txt` instead of `requirements.txt`, then install the project with `python -m pip install -e . --no-deps`. The lock file snapshots this Windows/Python 3.13 environment; wheels for other platforms or Python versions may differ. Version ranges in `requirements.txt` are the portable default.
+`scripts/train.py` also generates EDA, so a separate EDA run is optional.
+`requirements-lock.txt` is the fully hashed development export of `uv.lock`,
+including tests and quality tools; `requirements.txt` is the runtime-only export.
+Both include platform and Python markers. Install the local project separately
+with `python -m pip install -e . --no-deps` after installing the locked packages.
 
 ## Dataset and attribution
 

@@ -1,4 +1,5 @@
 """Shared schema, paths, labels, and experiment defaults."""
+
 import os
 from pathlib import Path
 
@@ -13,11 +14,31 @@ UCI_ARCHIVE = "https://archive.ics.uci.edu/static/public/45/heart+disease.zip"
 UCI_PAGE = "https://archive.ics.uci.edu/dataset/45/heart+disease"
 NUMERIC = ["age", "trestbps", "chol", "thalach", "oldpeak"]
 CATEGORICAL = ["sex", "cp", "fbs", "restecg", "exang", "slope", "ca", "thal"]
-FEATURES = ["age", "sex", "cp", "trestbps", "chol", "fbs", "restecg", "thalach", "exang", "oldpeak", "slope", "ca", "thal"]
+FEATURES = [
+    "age",
+    "sex",
+    "cp",
+    "trestbps",
+    "chol",
+    "fbs",
+    "restecg",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "slope",
+    "ca",
+    "thal",
+]
 TARGET = "target"
 # Broad data-entry bounds, NOT medical reference intervals. Zeros in cholesterol
 # or blood pressure in some source variants are not accepted as measurements.
-BOUNDS = {"age": (1, 120), "trestbps": (50, 300), "chol": (50, 800), "thalach": (20, 250), "oldpeak": (-5.0, 10.0)}
+BOUNDS = {
+    "age": (1, 120),
+    "trestbps": (50, 300),
+    "chol": (50, 800),
+    "thalach": (20, 250),
+    "oldpeak": (-5.0, 10.0),
+}
 CATEGORY_LABELS = {
     "sex": {0: "Female (source code 0)", 1: "Male (source code 1)"},
     "cp": {1: "Typical angina", 2: "Atypical angina", 3: "Non-anginal pain", 4: "Asymptomatic"},
@@ -29,10 +50,18 @@ CATEGORY_LABELS = {
     "thal": {3: "Normal", 6: "Fixed defect", 7: "Reversible defect"},
 }
 FIELD_LABELS = {
-    "age": "Age (years)", "sex": "Sex recorded in source", "cp": "Chest pain type",
-    "trestbps": "Resting blood pressure (mm Hg)", "chol": "Serum cholesterol (mg/dL)",
-    "fbs": "Fasting blood sugar", "restecg": "Resting ECG", "thalach": "Maximum heart rate (bpm)",
-    "exang": "Exercise-induced angina", "oldpeak": "ST depression relative to rest",
-    "slope": "Peak exercise ST slope", "ca": "Major vessels seen by fluoroscopy", "thal": "Thallium test result",
+    "age": "Age (years)",
+    "sex": "Sex recorded in source",
+    "cp": "Chest pain type",
+    "trestbps": "Resting blood pressure (mm Hg)",
+    "chol": "Serum cholesterol (mg/dL)",
+    "fbs": "Fasting blood sugar",
+    "restecg": "Resting ECG",
+    "thalach": "Maximum heart rate (bpm)",
+    "exang": "Exercise-induced angina",
+    "oldpeak": "ST depression relative to rest",
+    "slope": "Peak exercise ST slope",
+    "ca": "Major vessels seen by fluoroscopy",
+    "thal": "Thallium test result",
 }
 DISCLAIMER = "Educational research demonstration. Not clinically validated. Do not use this output to diagnose, treat, or make medical decisions."

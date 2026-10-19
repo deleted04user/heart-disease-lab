@@ -6,7 +6,13 @@ from heart_disease.config import FEATURES
 from heart_disease.data import DataValidationError
 from heart_disease.io import write_json
 from heart_disease.modeling import build_models, dependency_versions
-from heart_disease.prediction import ArtifactError, load_artifact, metadata_path, predict_records, save_artifact
+from heart_disease.prediction import (
+    ArtifactError,
+    load_artifact,
+    metadata_path,
+    predict_records,
+    save_artifact,
+)
 
 
 @pytest.fixture
@@ -17,7 +23,10 @@ def fitted(dataset):
 
 def test_output_shape_and_save_reload_consistency(fitted, dataset, tmp_path):
     path = tmp_path / "unit_fixture_model.joblib"
-    metadata = {"selected_model": "Logistic Regression", "dependency_versions": dependency_versions()}
+    metadata = {
+        "selected_model": "Logistic Regression",
+        "dependency_versions": dependency_versions(),
+    }
     save_artifact(fitted, metadata, path)
     restored, stored = load_artifact(path)
     before = predict_records(fitted, dataset.frame[FEATURES].iloc[:3])
@@ -32,7 +41,14 @@ def test_output_shape_and_save_reload_consistency(fitted, dataset, tmp_path):
 
 def test_prediction_rejects_missing_extra_unknown_and_ranges(fitted, dataset):
     valid = dataset.frame[FEATURES].iloc[:1].copy()
-    cases = [valid.drop(columns="age"), valid.assign(target=0), valid.assign(ca=99), valid.assign(chol=0), valid.assign(age=np.nan), valid.iloc[:0]]
+    cases = [
+        valid.drop(columns="age"),
+        valid.assign(target=0),
+        valid.assign(ca=99),
+        valid.assign(chol=0),
+        valid.assign(age=np.nan),
+        valid.iloc[:0],
+    ]
     for invalid in cases:
         with pytest.raises(DataValidationError):
             predict_records(fitted, invalid)

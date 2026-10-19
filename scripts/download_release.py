@@ -1,4 +1,5 @@
 """Download only the committed, checksum-pinned trusted public release archive."""
+
 import json
 from urllib.request import Request, urlopen
 
@@ -10,9 +11,13 @@ if __name__ == "__main__":
     output = ROOT / "dist" / config["asset"]
     if output.exists():
         if checksum(output.read_bytes()) != config["sha256"]:
-            raise ValueError("An existing archive has a different checksum; it was not overwritten.")
+            raise ValueError(
+                "An existing archive has a different checksum; it was not overwritten."
+            )
     else:
-        request = Request(config["url"], headers={"User-Agent": "HeartDiseaseLab/1.1 verified release client"})
+        request = Request(
+            config["url"], headers={"User-Agent": "HeartDiseaseLab/1.1 verified release client"}
+        )
         with urlopen(request, timeout=45) as response:
             payload = response.read(MAX_BUNDLE_BYTES + 1)
         if len(payload) > MAX_BUNDLE_BYTES or checksum(payload) != config["sha256"]:

@@ -1,4 +1,5 @@
 """Small, strict JSON and checksum utilities shared by scripts and the app."""
+
 import hashlib
 import json
 from pathlib import Path

@@ -1,8 +1,10 @@
 """Smoke-test inference using one real source record; never used as evaluation."""
+
+from pathlib import Path
+
 from _common import configure_logging, data_parser, load_args
 from heart_disease.config import FEATURES, MODEL_PATH
 from heart_disease.prediction import load_artifact, predict_records
-from pathlib import Path
 
 
 def main():
@@ -17,7 +19,9 @@ def main():
         result = predict_records(pipeline, record)
     except (ValueError, RuntimeError, OSError, IndexError) as exc:
         parser.exit(1, f"Prediction smoke test failed: {exc}\n")
-    print(f"Model: {metadata['selected_model']}; one real complete source record (functional check only)")
+    print(
+        f"Model: {metadata['selected_model']}; one real complete source record (functional check only)"
+    )
     print(result.to_string(index=False))
     print("Model output is educational, uncalibrated and not a medical diagnosis.")
 
