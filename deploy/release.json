@@ -1,8 +1,9 @@
 {
-  "version": "1.3.0",
-  "asset": "heart-disease-lab-1.3.0.zip",
-  "sha256": "6add83f97ebed04de3d650f8090671cd83166cbd9ce816895471a2ce6202a9ba",
+  "version": "1.3.1",
+  "asset": "heart-disease-lab-1.3.1.zip",
+  "sha256": "0317dd6195ec87ced9e87c6e1ae5eaa97abf7c50ea393ed5ec18dfdb8066cc35",
+  "manifest_sha256": "fde9dbed21bebad5c11449c352853db04fa1ff8b452c89b55e7d0cc06f2a4763",
   "run_id": "27586d03470741438f644f6067b70f22",
   "repository": "deleted04user/heart-disease-lab",
-  "url": "https://github.com/deleted04user/heart-disease-lab/releases/download/v1.3.0/heart-disease-lab-1.3.0.zip"
+  "url": "https://github.com/deleted04user/heart-disease-lab/releases/download/v1.3.1/heart-disease-lab-1.3.1.zip"
 }

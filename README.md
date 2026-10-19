@@ -2,7 +2,7 @@
 
 A complete local machine learning project using **real UCI Heart Disease records**: validated acquisition, exploratory analysis, leakage-safe model comparison, reusable inference and a five-page Streamlit dashboard.
 
-Release 1.3.0 retains the standard `uv.lock`, enforced lint/format/type/coverage checks,
+Release 1.3.1 retains the standard `uv.lock`, enforced lint/format/type/coverage checks,
 dependency auditing and updates, JSON logging, and isolated development/serving
 containers. It retains the [portable release](docs/deployment.md), MIT code
 license, public-example-only cloud entrypoint and transfer-gap diagnostics.
@@ -14,6 +14,10 @@ verification before activation, and an offline experiment integrity command:
 `python scripts/verify_experiment.py experiments/runs/<timestamp>-<id>`.
 See [the experiment architecture](docs/architecture.md) for its scope and legacy
 manifest support.
+
+The latest patch also rejects lossy input conversions and pins the extracted
+release manifest to the trusted deployment configuration. Cache reuse checks the
+complete inventory, including unexpected source and bytecode files.
 
 **Educational use only. Not clinically validated. Do not use the model, probability output or dashboard to diagnose, treat or make medical decisions.**
 
@@ -132,6 +136,11 @@ Raw/processed datasets and model binaries are ignored by Git. Small aggregate re
 If network access is restricted, download `processed.cleveland.data` from UCI and put it in `data/raw/processed.cleveland.data`. Run training normally. No fabricated or synthetic fallback data exists.
 
 Original-code headerless files require exactly 14 fields in the order below; named CSVs require the same 13 predictors plus exactly one target. Column names are trimmed and case-normalized. Positional interpretation is used only for the explicitly documented headerless layout.
+
+The Python validation/inference API accepts real numeric values and numeric
+strings. Boolean, complex and datetime scalars are rejected before conversion;
+they are never silently interpreted as measurements or target codes. The
+documented string-coded Kaggle loader still applies its explicit mappings.
 
 ```powershell
 python scripts/train.py --data "data/raw/my_cleveland.csv" --schema uci
