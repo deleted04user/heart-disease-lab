@@ -6,6 +6,8 @@ import io
 import logging
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from decimal import Decimal
+from numbers import Real
 from pathlib import Path
 from urllib.error import URLError
 from urllib.request import Request, urlopen
@@ -39,6 +41,19 @@ class Dataset:
     metadata: dict
 
 
+def _validate_numeric_types(series: pd.Series, label: str) -> None:
+    """Reject lossy or implicit scalar conversions before pandas coerces values."""
+    invalid = series.dropna().map(
+        lambda value: (
+            isinstance(value, (bool, np.bool_)) or not isinstance(value, (Real, Decimal, str))
+        )
+    )
+    if invalid.any():
+        raise DataValidationError(
+            f"{label}: expected real numeric values or numeric strings; boolean, complex and datetime values are invalid."
+        )
+
+
 def validate_features(frame: pd.DataFrame, *, allow_missing: bool) -> pd.DataFrame:
     """Validate canonical input codes and return numbers in canonical order."""
     if frame.columns.duplicated().any():
@@ -54,6 +69,7 @@ def validate_features(frame: pd.DataFrame, *, allow_missing: bool) -> pd.DataFra
     output = frame[FEATURES].copy()
     output = output.mask(output.isin(["?", "", "NA", "N/A", "NaN", "nan", "null"]))
     for col in FEATURES:
+        _validate_numeric_types(output[col], col)
         try:
             output[col] = pd.to_numeric(output[col], errors="raise").astype(float)
         except (ValueError, TypeError) as exc:
@@ -84,6 +100,7 @@ def validate_features(frame: pd.DataFrame, *, allow_missing: bool) -> pd.DataFra
 
 def normalize_target(series: pd.Series, semantics: str) -> pd.Series:
     """Transform only explicitly asserted UCI 0–4 or positive-is-presence binary labels."""
+    _validate_numeric_types(series, "Target")
     try:
         numeric = pd.to_numeric(series, errors="raise")
     except (ValueError, TypeError) as exc:

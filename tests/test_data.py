@@ -113,6 +113,38 @@ def test_invalid_feature_values(frame, col, value):
         validate_features(X, allow_missing=True)
 
 
+@pytest.mark.parametrize(
+    "column,value",
+    [
+        ("age", 63 + 99j),
+        ("oldpeak", np.complex64(2.3 + 0j)),
+        ("sex", True),
+        ("fbs", np.bool_(False)),
+        ("age", pd.Timestamp(63, unit="ns")),
+    ],
+)
+def test_features_reject_non_real_scalar_types_before_numeric_conversion(frame, column, value):
+    values = frame[FEATURES].astype(object)
+    values.loc[0, column] = value
+    with pytest.raises(DataValidationError, match="real numeric"):
+        validate_features(values, allow_missing=False)
+
+
+@pytest.mark.parametrize(
+    "values", [[False, True], [0 + 0j, 1 + 0j], [pd.Timestamp(0), pd.Timestamp(1)]]
+)
+def test_targets_reject_boolean_complex_and_datetime_types(values):
+    with pytest.raises(DataValidationError, match="real numeric"):
+        normalize_target(pd.Series(values), "binary")
+
+
+def test_real_numeric_strings_and_nullable_values_remain_supported(frame):
+    values = frame[FEATURES].astype(str)
+    values.loc[0, "ca"] = pd.NA
+    assert validate_features(values, allow_missing=True).ca.isna().sum() == 1
+    assert normalize_target(pd.Series(["0", "1"]), "binary").tolist() == [0, 1]
+
+
 def test_duplicates_removed_and_conflicting_labels_rejected(frame, tmp_path):
     path = tmp_path / "duplicates.csv"
     pd.concat([frame, frame.iloc[[0]]]).to_csv(path, index=False)
