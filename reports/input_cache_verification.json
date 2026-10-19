@@ -1,6 +1,6 @@
 {
   "version": "1.3.1",
-  "recorded_utc": "2026-10-19T22:25:52.168311+00:00",
+  "recorded_utc": "2026-10-19T22:28:48.326693+00:00",
   "local_windows": {
     "tests_passed": 134,
     "tests_skipped": 2,
@@ -54,11 +54,82 @@
     "linux": "passed",
     "identical_example_probabilities": true,
     "sha256": "0317dd6195ec87ced9e87c6e1ae5eaa97abf7c50ea393ed5ec18dfdb8066cc35",
-    "manifest_sha256": "fde9dbed21bebad5c11449c352853db04fa1ff8b452c89b55e7d0cc06f2a4763"
+    "manifest_sha256": "fde9dbed21bebad5c11449c352853db04fa1ff8b452c89b55e7d0cc06f2a4763",
+    "github_linux": "passed with identical example probabilities",
+    "github_linux_python": "3.13.16"
   },
   "frozen_model": {
     "run_id": "27586d03470741438f644f6067b70f22",
     "sha256": "e4b0ba8ab0a23ab81ff1fd53dd03ff326766089a2556bfe3a49fb8e1c5e889c7",
     "unchanged": true
+  },
+  "remote_ci": {
+    "conclusion": "success",
+    "headSha": "e8c79a68dcb5798d73bb8773523f3ce15821ca13",
+    "status": "completed",
+    "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39334926949",
+    "jobs": [
+      {
+        "name": "container",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "unit-and-ui (ubuntu-latest, 3.10)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "lint-and-typecheck",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "unit-and-ui (ubuntu-latest, 3.13)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "unit-and-ui (windows-latest, 3.10)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "unit-and-ui (windows-latest, 3.13)",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "remote_real_data": {
+    "conclusion": "success",
+    "headSha": "e8c79a68dcb5798d73bb8773523f3ce15821ca13",
+    "status": "completed",
+    "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39334940520",
+    "jobs": [
+      {
+        "name": "train-and-verify",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "remote_portable": {
+    "conclusion": "success",
+    "headSha": "e8c79a68dcb5798d73bb8773523f3ce15821ca13",
+    "status": "completed",
+    "url": "https://github.com/deleted04user/heart-disease-lab/actions/runs/39334943925",
+    "jobs": [
+      {
+        "name": "clean-linux-portable",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "published_release": {
+    "url": "https://github.com/deleted04user/heart-disease-lab/releases/tag/v1.3.1",
+    "asset_bytes": 1142539,
+    "asset_digest": "sha256:0317dd6195ec87ced9e87c6e1ae5eaa97abf7c50ea393ed5ec18dfdb8066cc35"
   }
 }

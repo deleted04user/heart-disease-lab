@@ -16,6 +16,11 @@ This patch closes two input and deployment-integrity gaps, with regression tests
   is 87.04%, with no exclusions. Six plotting deprecation warnings remain.
 - The portable application passes on Windows and Linux, and a local cloud
   bootstrap test verifies all pages, predictions and cache reuse after reruns.
+- All six [GitHub checks](https://github.com/deleted04user/heart-disease-lab/actions/runs/39334926949)
+  pass, including the Windows/Linux matrix and both container targets. The
+  [real-data workflow](https://github.com/deleted04user/heart-disease-lab/actions/runs/39334940520)
+  and [published portable verification](https://github.com/deleted04user/heart-disease-lab/actions/runs/39334943925)
+  also pass at the release commit.
 
 The portable archive SHA-256 is
 `0317dd6195ec87ced9e87c6e1ae5eaa97abf7c50ea393ed5ec18dfdb8066cc35`.
