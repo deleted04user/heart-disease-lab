@@ -14,6 +14,7 @@ CHILD = r"""
 import json, os, sys
 from pathlib import Path
 root = Path(sys.argv[1]).resolve()
+sys.dont_write_bytecode = True
 sys.path.insert(0, str(root / "src"))
 os.environ["HEART_PUBLIC_DEMO"] = "1"
 os.environ["HEART_MODEL_PATH"] = str(root / "models/heart_model.joblib")

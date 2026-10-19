@@ -23,7 +23,7 @@ if __name__ == "__main__":
     )
     write_json(
         ROOT / "deploy/release.json",
-        {key: result[key] for key in ["version", "asset", "sha256", "run_id"]}
+        {key: result[key] for key in ["version", "asset", "sha256", "manifest_sha256", "run_id"]}
         | {"repository": args.repository, "url": url},
     )
     (ROOT / "deploy/requirements.txt").write_text(result["runtime_requirements"], encoding="utf-8")

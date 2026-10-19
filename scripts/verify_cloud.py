@@ -23,6 +23,7 @@ def main() -> None:
     assert module.MODEL_PATH.resolve().is_relative_to(root / ".deployment-cache")
     assert all(widget.disabled for widget in app.number_input)
     assert all(widget.disabled for widget in app.selectbox if widget.key != "demo_example_index")
+    from heart_disease.bundle import ensure_cloud_bundle
     from heart_disease.demo import public_demo_record
     from heart_disease.prediction import load_artifact, predict_records
 
@@ -36,6 +37,8 @@ def main() -> None:
         expected = predict_records(pipeline, record).iloc[0].positive_class_probability
         assert any(metric.value == f"{expected:.1%}" for metric in app.metric)
         assert app.session_state["prediction_export"]["public_example_loaded"] is True
+    cached = ensure_cloud_bundle(root / "deploy/release.json", root / ".deployment-cache")
+    assert module.MODEL_PATH.resolve().is_relative_to(cached)
     print(
         json.dumps(
             {
@@ -46,6 +49,7 @@ def main() -> None:
                     "all five pages",
                     "disabled personal inputs",
                     "two public predictions match the saved model",
+                    "verified cache remains reusable after dashboard reruns",
                 ],
             }
         )

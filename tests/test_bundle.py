@@ -22,7 +22,21 @@ from heart_disease.prediction import load_artifact, save_artifact
 
 
 @pytest.mark.parametrize(
-    "name", ["../outside", "/absolute", "C:/drive", "models/../../outside", "models\\bad"]
+    "name",
+    [
+        "../outside",
+        "/absolute",
+        "C:/drive",
+        "models/../../outside",
+        "models\\bad",
+        "src//module.py",
+        "src/module.py.",
+        "src/module.py ",
+        "src/NUL.py",
+        "src/COM1",
+        "src/invalid?.py",
+        "src/\x00module.py",
+    ],
 )
 def test_archive_paths_cannot_escape(name):
     with pytest.raises(ValueError):

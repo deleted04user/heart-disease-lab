@@ -6,7 +6,8 @@ the `streamlit-demo` branch and `deploy/streamlit_app.py`, with Python **3.13**.
 ## Portable release
 
 `python scripts/build_release.py` creates
-`dist/heart-disease-lab-1.2.1.zip` and writes the exact archive SHA-256 and fixed
+`dist/heart-disease-lab-<version>.zip` and writes the exact archive SHA-256,
+manifest SHA-256 and fixed
 GitHub release URL to `deploy/release.json`. The archive contains the unchanged
 trusted fitted model, matching metadata, sanitized aggregate reports, code,
 licenses and five complete anonymous public UCI examples. It excludes full raw
@@ -19,9 +20,21 @@ measurement fields disabled. No raw data or editable project install is required
 
 The cloud entrypoint fetches only the explicitly pinned GitHub release archive,
 checks its SHA-256 before extraction or model loading, rejects unsafe ZIP paths
-and symlinks, verifies file hashes, and configures portable artifact paths. It
+and symlinks, verifies the complete file inventory and file hashes, and configures portable artifact paths. It
 does not retrain or download clinical inputs at startup. Only public study records
 can be selected; the server also checks that submitted form values match them.
+
+On cache reuse, the manifest itself must match the checksum in the trusted
+deployment configuration. Updating both a cached source file and its local
+manifest therefore fails verification. Unlisted source/bytecode files, symlinks,
+ambiguous Windows paths and case-colliding paths are rejected. The cloud
+entrypoint disables bytecode writes to keep the verified inventory stable across
+reruns. Launch a manually extracted portable app with
+`python -B -m streamlit run app.py` for the same behavior.
+
+The bootstrap requires `manifest_sha256` beginning with release 1.3.1. Generate
+matching release configuration with `scripts/build_release.py`; older release
+assets retain their original bootstrap and are not modified in place.
 
 Because joblib can execute code, the release asset must be built and published
 by the trusted maintainer. Checksums do not make arbitrary third-party models safe.
@@ -42,7 +55,7 @@ and verifies that only the intended configuration differs from main.
 1. Run unit tests, the publication index audit and clean portable verification.
 2. Push reviewed source/aggregate materials on `main`; run the test matrix and
    manual real-data integration workflow.
-3. Publish tag/release `v1.2.1` with the verified ZIP, without adding model binaries
+3. Publish tag/release `v<version>` with the verified ZIP, without adding model binaries
    to Git history. Run the manual portable-release verification workflow.
 4. Create/push `streamlit-demo`. In Streamlit Community Cloud choose repository
    `deleted04user/heart-disease-lab`, branch `streamlit-demo`, entrypoint

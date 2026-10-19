@@ -31,4 +31,6 @@ os.environ["HEART_MODEL_PATH"] = str(bundle / "models/heart_model.joblib")
 os.environ["HEART_REPORT_DIR"] = str(bundle / "reports")
 os.environ["HEART_PUBLIC_DEMO"] = "1"
 sys.path.insert(0, str(bundle / "src"))
+# Keep the verified source inventory stable across reruns and cache verification.
+sys.dont_write_bytecode = True
 runpy.run_path(str(bundle / "app.py"), run_name="__main__")
