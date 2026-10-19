@@ -6,6 +6,18 @@ UID 10001. The development target installs the full, locked test environment;
 the smaller runtime target installs only the exact serving dependencies needed
 by the pinned trusted release.
 
+The serving inputs in `deploy/requirements.txt` are the five exact model/runtime
+versions. `deploy/requirements-lock.txt` additionally resolves and hashes their
+transitive dependencies. Regenerate it after an intentional serving-input change:
+
+```sh
+uv pip compile deploy/requirements.txt --python-version 3.13 --universal --generate-hashes --output-file deploy/requirements-lock.txt --quiet
+```
+
+The container installer verifies the hashes and installs the complete resolved
+graph. Both stages explicitly select Python 3.13; base-image minor-version
+upgrades require maintainer review rather than a routine dependency update.
+
 ```sh
 docker build --target development -t heart-disease-tests .
 docker run --rm heart-disease-tests

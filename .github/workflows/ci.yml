@@ -37,7 +37,9 @@ jobs:
           git diff --exit-code -- requirements.txt requirements-lock.txt uv.lock
           uv pip check
       - name: Audit pinned dependencies
-        run: uv run --locked pip-audit -r requirements-lock.txt --no-deps --disable-pip --strict --progress-spinner off
+        run: |
+          uv run --locked pip-audit -r requirements-lock.txt --no-deps --disable-pip --strict --progress-spinner off
+          uv run --locked pip-audit -r deploy/requirements-lock.txt --no-deps --disable-pip --strict --progress-spinner off
       - name: Build installable distributions
         run: uv build
 
