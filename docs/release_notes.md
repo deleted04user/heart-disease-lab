@@ -19,6 +19,11 @@ fitted Random Forest run `27586d03470741438f644f6067b70f22` and its predictions.
 - Windows: 109 tests pass, one Linux-only symlink test skips, and combined
   statement/branch coverage is 87.20%, with no exclusions. Six third-party
   plotting deprecation warnings remain visible.
+- All six [GitHub checks](https://github.com/deleted04user/heart-disease-lab/actions/runs/39316346892)
+  pass, including Windows/Linux on Python 3.10/3.13 and development/runtime
+  containers. The [real-data workflow](https://github.com/deleted04user/heart-disease-lab/actions/runs/39316371449)
+  and [published portable verification](https://github.com/deleted04user/heart-disease-lab/actions/runs/39316378151)
+  also pass at the release commit.
 
 The portable archive SHA-256 is
 `6add83f97ebed04de3d650f8090671cd83166cbd9ce816895471a2ce6202a9ba`.
