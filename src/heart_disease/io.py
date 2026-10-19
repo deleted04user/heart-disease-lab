@@ -4,8 +4,11 @@ import hashlib
 import json
 import os
 import tempfile
+import threading
 from pathlib import Path
 from typing import Any
+
+_REPLACE_LOCK = threading.Lock()
 
 
 def sha256(path: Path) -> str:
@@ -36,7 +39,10 @@ def write_json(path: Path, value: Any) -> None:
             handle.write(payload)
             handle.flush()
             os.fsync(handle.fileno())
-        os.replace(temporary, path)
+        # Windows can reject two simultaneous replaces of the same destination.
+        # Serialize this final step within the process; staging remains independent.
+        with _REPLACE_LOCK:
+            os.replace(temporary, path)
     finally:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
