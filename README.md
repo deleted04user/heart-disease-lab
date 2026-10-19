@@ -2,12 +2,18 @@
 
 A complete local machine learning project using **real UCI Heart Disease records**: validated acquisition, exploratory analysis, leakage-safe model comparison, reusable inference and a five-page Streamlit dashboard.
 
-Release 1.2.1 adds a standard `uv.lock`, enforced lint/format/type/coverage checks,
+Release 1.3.0 retains the standard `uv.lock`, enforced lint/format/type/coverage checks,
 dependency auditing and updates, JSON logging, and isolated development/serving
 containers. It retains the [portable release](docs/deployment.md), MIT code
 license, public-example-only cloud entrypoint and transfer-gap diagnostics.
 Raw datasets, local run snapshots and model binaries remain outside Git history.
 The fitted model and its probability method have not been changed.
+
+This release adds interrupted-write protection, complete snapshot
+verification before activation, and an offline experiment integrity command:
+`python scripts/verify_experiment.py experiments/runs/<timestamp>-<id>`.
+See [the experiment architecture](docs/architecture.md) for its scope and legacy
+manifest support.
 
 **Educational use only. Not clinically validated. Do not use the model, probability output or dashboard to diagnose, treat or make medical decisions.**
 

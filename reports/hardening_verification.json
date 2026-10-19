@@ -1,0 +1,52 @@
+{
+  "version": "1.3.0",
+  "recorded_utc": "2026-10-19T20:04:28.588727+00:00",
+  "local_windows": {
+    "status": "passed",
+    "tests_passed": 109,
+    "tests_skipped": 1,
+    "skip_reason": "Report directory symlink creation requires Windows privileges; exercised on Linux CI",
+    "warnings": 6,
+    "warning_scope": "Third-party Seaborn/Matplotlib deprecations",
+    "coverage": {
+      "covered_lines": 1534,
+      "num_statements": 1701,
+      "percent_covered": 87.20144209103199,
+      "percent_covered_display": "87",
+      "missing_lines": 167,
+      "excluded_lines": 0,
+      "percent_statements_covered": 90.1822457378013,
+      "percent_statements_covered_display": "90",
+      "num_branches": 518,
+      "num_partial_branches": 89,
+      "covered_branches": 401,
+      "missing_branches": 117,
+      "percent_branches_covered": 77.41312741312741,
+      "percent_branches_covered_display": "77"
+    }
+  },
+  "lint": "passed",
+  "format": "passed",
+  "mypy_package_files": 18,
+  "distribution_build": "sdist and wheel built successfully",
+  "frozen_experiment": {
+    "status": "passed",
+    "run_id": "27586d03470741438f644f6067b70f22",
+    "model_sha256": "e4b0ba8ab0a23ab81ff1fd53dd03ff326766089a2556bfe3a49fb8e1c5e889c7",
+    "report_count": 32,
+    "legacy_metadata_digest_available": false,
+    "model_unchanged": true
+  },
+  "portable_release": {
+    "sha256": "6add83f97ebed04de3d650f8090671cd83166cbd9ce816895471a2ce6202a9ba",
+    "windows": "passed",
+    "linux": "passed",
+    "example_predictions_identical": true
+  },
+  "changes": [
+    "Atomic JSON staging and in-process Windows replacement serialization",
+    "Complete experiment inventory and metadata verification before activation",
+    "Offline snapshot verifier without deserialization or source data access",
+    "Reproducible and action-pinned manual workflows"
+  ]
+}
