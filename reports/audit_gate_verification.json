@@ -1,0 +1,69 @@
+{
+  "recorded_utc": "2026-10-20T15:13:06.041576+00:00",
+  "baseline_commit": "131f84ff098eccc0e269fe1db5ed54e4f4403bdc",
+  "capability": "CI verifies known-vulnerable dependency rejection without installation",
+  "live_probe": {
+    "status": "passed",
+    "scanner": "pip-audit",
+    "scanner_version": "2.10.1",
+    "auditor_exit_code": 1,
+    "fixture": {
+      "package": "urllib3",
+      "version": "1.26.4"
+    },
+    "matched_advisory_ids": [
+      "CVE-2021-33503",
+      "GHSA-q2q7-5pp4-w6pg",
+      "PYSEC-2021-108"
+    ],
+    "fixture_installed": false
+  },
+  "clean_locks": {
+    "development": {
+      "dependencies": 86,
+      "known_vulnerabilities": 0
+    },
+    "serving": {
+      "dependencies": 41,
+      "known_vulnerabilities": 0
+    }
+  },
+  "lockfiles_unchanged": true,
+  "local_windows": {
+    "passed": 148,
+    "skipped": 2,
+    "skip_reason": "Linux symlink cases require Windows privileges",
+    "warnings": 6,
+    "warning_scope": "Third-party plotting deprecations",
+    "coverage": {
+      "covered_lines": 1575,
+      "num_statements": 1749,
+      "percent_covered": 87.03784254023489,
+      "percent_covered_display": "87",
+      "missing_lines": 174,
+      "excluded_lines": 0,
+      "percent_statements_covered": 90.05145797598628,
+      "percent_statements_covered_display": "90",
+      "num_branches": 550,
+      "num_partial_branches": 96,
+      "covered_branches": 426,
+      "missing_branches": 124,
+      "percent_branches_covered": 77.45454545454545,
+      "percent_branches_covered_display": "77"
+    }
+  },
+  "ruff": "passed",
+  "format": "passed",
+  "mypy_package_files": 18,
+  "bounded_comparison": {
+    "new_ci_capability": true,
+    "unchanged_holdout_controls": 2,
+    "regressions": 0,
+    "agent_rollouts_compared": false,
+    "limit": "Direct executable/source checks establish the added capability, not agent productivity or external scoring impact."
+  },
+  "fresh_external_score": "not performed; effect remains unproven",
+  "maintenance_history": "Baseline has 22 genuine commits, one author and less than one day of history; sustained maintenance remains limited.",
+  "runtime_model_or_global_guidance_changed": false,
+  "reload_required": false
+}

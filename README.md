@@ -398,6 +398,10 @@ Future work: additional untouched cohorts, prospective evaluation, measurement h
 
 Reference documentation: [scikit-learn supervised learning](https://scikit-learn.org/stable/supervised_learning.html), [pipelines and leakage](https://scikit-learn.org/stable/common_pitfalls.html), [XGBoost parameters](https://xgboost.readthedocs.io/en/stable/parameter.html), [Streamlit](https://docs.streamlit.io/).
 
+Engineering checks and their evidence are mapped in
+[engineering readiness](docs/engineering_readiness.md), including the dependency
+auditor's tested rejection of a known vulnerable pin without installing it.
+
 ## Operational logging
 
 The dashboard and download/training/EDA/prediction commands emit JSON operational

@@ -9,6 +9,7 @@ uv run ruff format --check src scripts app.py tests deploy
 uv run mypy src
 uv run pytest --cov --cov-report=term-missing:skip-covered
 uv run pip-audit -r requirements-lock.txt --no-deps --disable-pip --strict
+uv run python scripts/verify_audit_gate.py
 uv build
 ```
 
@@ -51,3 +52,9 @@ files to a completed snapshot; diagnostics or changes belong in a separate run.
 The manual real-data workflow installs from the same uv lock as development;
 portable verification uses the complete hashed serving lock. All workflow
 actions are pinned to full commit hashes.
+
+The audit gate probe scans a temporary known-vulnerable pin without installing
+it. It requires both a failing auditor exit and the expected advisory evidence,
+so scanner/network failures cannot masquerade as a successful rejection check.
+See `docs/engineering_readiness.md` for the implementation/evidence mapping and
+the remaining limits on maintenance history.

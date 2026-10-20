@@ -40,6 +40,8 @@ jobs:
         run: |
           uv run --locked pip-audit -r requirements-lock.txt --no-deps --disable-pip --strict --progress-spinner off
           uv run --locked pip-audit -r deploy/requirements-lock.txt --no-deps --disable-pip --strict --progress-spinner off
+      - name: Verify the audit rejects a known vulnerable fixture without installation
+        run: uv run --locked python scripts/verify_audit_gate.py
       - name: Build installable distributions
         run: uv build
 
