@@ -3,7 +3,10 @@
 import json
 import logging
 import os
+import traceback
+from contextlib import contextmanager
 from datetime import datetime, timezone
+from uuid import uuid4
 
 _LEVELS = {
     name: getattr(logging, name) for name in ("DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL")
@@ -22,7 +25,30 @@ class JsonFormatter(logging.Formatter):
         }
         if record.exc_info:
             payload["exception"] = self.formatException(record.exc_info)
+        for field in ("event_id", "exception_type", "frames"):
+            if hasattr(record, field):
+                payload[field] = getattr(record, field)
         return json.dumps(payload, ensure_ascii=False)
+
+
+@contextmanager
+def track_dashboard_errors():
+    """Record failure locations without exception text, source lines or local values."""
+    try:
+        yield
+    except Exception as exc:
+        logging.getLogger("heart_disease.dashboard").error(
+            "Unhandled dashboard failure",
+            extra={
+                "event_id": uuid4().hex,
+                "exception_type": type(exc).__name__,
+                "frames": [
+                    {"file": os.path.basename(frame.filename), "line": frame.lineno}
+                    for frame in traceback.extract_tb(exc.__traceback__)
+                ],
+            },
+        )
+        raise
 
 
 def configure_logging(level: str | None = None) -> None:

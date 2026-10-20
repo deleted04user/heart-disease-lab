@@ -51,3 +51,34 @@ def test_exception_context_is_json_encoded(isolated_root, capsys):
     except RuntimeError:
         logging.getLogger("heart_disease.test").exception("Job failed")
     assert "RuntimeError: operational failure" in json.loads(capsys.readouterr().err)["exception"]
+
+
+def test_dashboard_error_tracking_omits_sensitive_values(isolated_root, capsys):
+    from heart_disease.logging_config import track_dashboard_errors
+
+    configure_logging()
+    failure = ValueError("private measurement 987654")
+    with pytest.raises(ValueError) as caught:
+        with track_dashboard_errors():
+            raise failure
+    assert caught.value is failure
+    output = capsys.readouterr().err
+    event = json.loads(output)
+    assert "987654" not in output and "private measurement" not in output
+    assert event["exception_type"] == "ValueError"
+    assert len(event["event_id"]) == 32
+    assert event["frames"][-1]["file"] == "test_logging.py"
+    assert event["frames"][-1]["line"] > 0
+    assert event["level"] == "ERROR"
+
+
+def test_dashboard_success_and_control_flow_are_not_errors(isolated_root, capsys):
+    from heart_disease.logging_config import track_dashboard_errors
+
+    configure_logging()
+    with track_dashboard_errors():
+        pass
+    with pytest.raises(KeyboardInterrupt):
+        with track_dashboard_errors():
+            raise KeyboardInterrupt
+    assert capsys.readouterr().err == ""
