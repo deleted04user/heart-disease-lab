@@ -15,7 +15,7 @@ COPY --chown=appuser:appuser . .
 USER appuser
 RUN uv sync --locked --extra dev --no-editable
 ENV PATH="/app/.venv/bin:$PATH"
-CMD ["python", "-m", "pytest", "--cov", "--cov-report=term-missing:skip-covered"]
+CMD ["python", "-m", "pytest", "--cov", "--cov-report=xml", "--cov-report=term-missing:skip-covered"]
 
 FROM base AS runtime
 COPY --chown=appuser:appuser deploy/requirements.txt /app/deploy/requirements.txt

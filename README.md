@@ -59,7 +59,21 @@ and package hashes; CI checks Python 3.10 and 3.13 on Windows and Linux.
 exports. See [CONTRIBUTING.md](CONTRIBUTING.md) for lock updates and all checks.
 
 For an isolated test suite or demo, follow [the container guide](docs/containers.md).
-`docker compose up --build` serves public examples on localhost port 8502.
+`docker compose up --build` uses `docker-compose.yml` to start the complete app on
+localhost port 8502; no database or sibling service is required. The serving app
+loads the pinned release, so source changes become hosted changes only after a
+separately verified release update.
+
+To test source without network egress, install dependencies in the image first:
+
+```sh
+docker build --target development -t heart-disease-tests .
+docker run --rm --network none heart-disease-tests
+```
+
+The build needs network access. The test run uses only artificial fixtures and
+local files, runs the entire default suite, and enforces 85% coverage. CI uploads
+its XML result as `coverage-offline-container`.
 The native Streamlit `/_stcore/health` endpoint is checked separately from model
 and dashboard readiness.
 

@@ -20,7 +20,7 @@ upgrades require maintainer review rather than a routine dependency update.
 
 ```sh
 docker build --target development -t heart-disease-tests .
-docker run --rm heart-disease-tests
+docker run --rm --network none heart-disease-tests
 docker build --target runtime -t heart-disease-demo .
 docker run --rm heart-disease-demo python scripts/verify_cloud.py
 docker run --rm -p 127.0.0.1:8502:8501 heart-disease-demo
@@ -44,3 +44,18 @@ runtime image and checks the serving process health.
 
 The development image includes Git because publication-regression tests create
 temporary Git indexes. These tests never modify the checkout's actual index.
+
+## Offline test boundary
+
+The image build downloads the base image, OS packages and locked Python dependencies.
+After that installation step, `docker run --rm --network none heart-disease-tests`
+runs the complete default suite with Docker network egress disabled. It uses
+artificial fixtures, requires no datasets, release downloads, database or external
+service, and enforces the same 85% coverage threshold. CI retains the XML coverage
+report as `coverage-offline-container`. This is not a claim that uncached package
+installation works offline. No tests are excluded to obtain this result.
+
+`docker-compose.yml` starts the entire serving stack with `docker compose up --build`.
+The application has no backing database or sibling service. The serving stack is
+separate from offline testing: its first startup downloads the pinned release,
+and continues to serve that release until a newly verified release is configured.

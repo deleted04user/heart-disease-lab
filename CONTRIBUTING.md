@@ -58,3 +58,15 @@ it. It requires both a failing auditor exit and the expected advisory evidence,
 so scanner/network failures cannot masquerade as a successful rejection check.
 See `docs/engineering_readiness.md` for the implementation/evidence mapping and
 the remaining limits on maintenance history.
+
+## Maintainers
+
+This is currently a solo-maintainer project maintained by Oussama Oulkaid
+(`deleted04user`). Response times for issues and pull requests are best-effort;
+there is no guaranteed response time or staffed support service. Release tags
+identify snapshots, not evidence of long-term maintenance or multiple contributors.
+
+External contributions are welcome through pull requests. Include the problem,
+focused change and relevant behavioral tests; the maintainer reviews before merge.
+Use each contributor's real identity. Sustained history and independent review
+must come from actual work over time; neither is claimed by this repository today.
