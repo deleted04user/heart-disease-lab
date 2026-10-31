@@ -1,25 +1,24 @@
 # Heart Disease Lab
 
-A complete local machine learning project using **real UCI Heart Disease records**: validated acquisition, exploratory analysis, leakage-safe model comparison, reusable inference and a five-page Streamlit dashboard.
-
-Release 1.3.1 retains the standard `uv.lock`, enforced lint/format/type/coverage checks,
-dependency auditing and updates, JSON logging, and isolated development/serving
-containers. It retains the [portable release](docs/deployment.md), MIT code
-license, public-example-only cloud entrypoint and transfer-gap diagnostics.
-Raw datasets, local run snapshots and model binaries remain outside Git history.
-The fitted model and its probability method have not been changed.
-
-This release adds interrupted-write protection, complete snapshot
-verification before activation, and an offline experiment integrity command:
-`python scripts/verify_experiment.py experiments/runs/<timestamp>-<id>`.
-See [the experiment architecture](docs/architecture.md) for its scope and legacy
-manifest support.
-
-The latest patch also rejects lossy input conversions and pins the extracted
-release manifest to the trusted deployment configuration. Cache reuse checks the
-complete inventory, including unexpected source and bytecode files.
+A local machine learning project using **real UCI Heart Disease records**: validated data, reproducible model comparison, and a five-page Streamlit dashboard.
 
 **Educational use only. Not clinically validated. Do not use the model, probability output or dashboard to diagnose, treat or make medical decisions.**
+
+[![Heart Disease Lab dashboard: real data and explicit provenance](docs/demo_poster.png)](docs/demo.mp4)
+
+[Watch the 26-second walkthrough](docs/demo.mp4) · [Run the demo locally](#reproducible-development--windows-macos-and-linux) · [Model card](reports/model_card.md) · [Evaluation details](#evaluation-methodology)
+
+The captioned walkthrough is assembled from screenshots of the local application; it is not a live recording.
+
+### What I built
+
+- A Python workflow for validated data acquisition, exploration, preprocessing, model comparison, and local inference.
+- A Streamlit dashboard for project context, example predictions, evaluation, feature importance, and limitations.
+- Reproducible experiments with versioned artifacts, Docker support, automated checks, and a model card.
+
+### An evaluation lesson
+
+On the separately sourced Hungarian cohort, the frozen model had **ROC-AUC 0.899** but **recall 0.491** at the fixed 0.5 threshold: 54 of 106 presence-labelled observations were missed. Several features had substantially more missing values than in Cleveland training data. Controlled masking checks showed sensitivity to feature availability; they do not establish that missingness alone caused the gap. This is a historical transfer check, not clinical validation. [Read the investigation](reports/transfer_diagnostics.md).
 
 ## Overview and objectives
 
@@ -325,6 +324,26 @@ python scripts/build_demo.py
 
 To create portfolio screenshots, launch Streamlit, open each page at a typical laptop width, and use the browser or Windows screenshot tool. Save to a chosen `docs/screenshots/` folder. Use public dataset examples and avoid identifiable patient information. Do not present blank/example form values as a real patient's record. The dashboard stores no input history or database records; Streamlit temporarily retains form values in the browser session. Do not expose this demo publicly with sensitive information.
 
+## Release notes
+
+Release 1.3.1 retains the standard `uv.lock`, enforced lint/format/type/coverage checks,
+dependency auditing and updates, JSON logging, and isolated development/serving
+containers. It retains the [portable release](docs/deployment.md), MIT code
+license, public-example-only cloud entrypoint and transfer-gap diagnostics.
+Raw datasets, local run snapshots and model binaries remain outside Git history.
+The fitted model and its probability method have not been changed.
+
+This release adds interrupted-write protection, complete snapshot
+verification before activation, and an offline experiment integrity command:
+`python scripts/verify_experiment.py experiments/runs/<timestamp>-<id>`.
+See [the experiment architecture](docs/architecture.md) for its scope and legacy
+manifest support.
+
+The latest patch also rejects lossy input conversions and pins the extracted
+release manifest to the trusted deployment configuration. Cache reuse checks the
+complete inventory, including unexpected source and bytecode files. See the full
+[release notes](docs/release_notes.md).
+
 ## Tests and verification
 
 ```powershell
@@ -425,3 +444,4 @@ Streamlit reruns reuse the handler and preserve host logging handlers. Applicati
 code must not log patient measurements. `.env.example` documents all supported
 environment variables; export them in your shell because `.env` is not loaded
 automatically.
+
