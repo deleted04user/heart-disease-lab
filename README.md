@@ -20,6 +20,8 @@ The captioned walkthrough is assembled from screenshots of the local application
 
 On the separately sourced Hungarian cohort, the frozen model had **ROC-AUC 0.899** but **recall 0.491** at the fixed 0.5 threshold: 54 of 106 presence-labelled observations were missed. Several features had substantially more missing values than in Cleveland training data. Controlled masking checks showed sensitivity to feature availability; they do not establish that missingness alone caused the gap. This is a historical transfer check, not clinical validation. [Read the investigation](reports/transfer_diagnostics.md).
 
+**Explore:** [Run locally](#reproducible-development--windows-macos-and-linux) · [Data and provenance](#dataset-and-attribution) · [Evaluation](#evaluation-methodology) · [Dashboard](#dashboard-and-screenshots) · [Verification](#tests-and-verification) · [Limitations](#troubleshooting-and-limitations)
+
 ## Overview and objectives
 
 The task is supervised binary classification of the **recorded angiographic disease-status label**, not prediction of future disease onset. The project demonstrates practical data validation, preprocessing, honest evaluation and software engineering for a student portfolio or interview.
@@ -445,3 +447,7 @@ code must not log patient measurements. `.env.example` documents all supported
 environment variables; export them in your shell because `.env` is not loaded
 automatically.
 
+
+---
+
+[Oussama Oulkaid · GitHub profile](https://github.com/deleted04user) · [Explore the project portfolio](https://github.com/deleted04user/deleted04user/blob/main/PORTFOLIO.md)
